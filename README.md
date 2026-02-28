@@ -1,8 +1,8 @@
-# Help File Web Version
+﻿# Help File Web Version
 
 A web-based help file system for quick access to support documentation and canned responses.
 
-## 🚀 Deployment
+## ðŸš€ Deployment
 
 ### GitHub Pages Setup
 
@@ -17,24 +17,24 @@ Once deployed on GitHub Pages, you can share the direct link with anyone:
 - **Main URL**: `https://yourusername.github.io/repository-name/index.html`
 - Users will be able to access all help files directly from their browser
 
-## 📁 File Structure
+## ðŸ“ File Structure
 
 ```
 HelpFile/
-├── index.html          # Main entry point (landing page)
-├── Greeting.html       # Help files listing page with search
-├── Css/
-│   └── discoCursor.css # Custom cursor styles
-├── js/
-│   └── discoCursor.js  # Cursor particle effect
-├── 2Canned Basic.htm   # Help file documents (29 files)
-├── 2cannedmemo.htm
-├── ... (other help files)
-├── favicon4.ico
-└── *.gif, *.jfif       # Assets
+â”œâ”€â”€ index.html          # Main entry point (landing page)
+â”œâ”€â”€ Greeting.html       # Help files listing page with search
+â”œâ”€â”€ Css/
+â”‚   â””â”€â”€ discoCursor.css # Custom cursor styles
+â”œâ”€â”€ js/
+â”‚   â””â”€â”€ discoCursor.js  # Cursor particle effect
+â”œâ”€â”€ 2CannedBasic.htm   # Help file documents (29 files)
+â”œâ”€â”€ 2cannedmemo.htm
+â”œâ”€â”€ ... (other help files)
+â”œâ”€â”€ favicon4.ico
+â””â”€â”€ *.gif, *.jfif       # Assets
 ```
 
-## ✨ Features
+## âœ¨ Features
 
 - **Responsive Design**: Works on desktop and mobile devices
 - **Dark Mode Toggle**: Switch between light and dark themes
@@ -43,7 +43,7 @@ HelpFile/
 - **Custom Cursor**: Interactive particle effect on mouse movement
 - **No Authentication**: Direct access to all help files
 
-## 🎯 Usage
+## ðŸŽ¯ Usage
 
 1. Open `index.html` in any web browser
 2. Click **Next** to access the help files list
@@ -52,7 +52,7 @@ HelpFile/
 5. Use **Theme** button to toggle dark/light mode
 6. Use **Home** button to return to the landing page
 
-## 🌐 Browser Compatibility
+## ðŸŒ Browser Compatibility
 
 - Chrome (Recommended)
 - Firefox
@@ -60,14 +60,14 @@ HelpFile/
 - Edge
 - Any modern browser with HTML5 support
 
-## 📝 Notes
+## ðŸ“ Notes
 
 - All help files are static HTML - no server required
 - Works offline when opened locally
 - Optimized for GitHub Pages deployment
 - All file paths are relative for portability
 
-## 🔧 Customization
+## ðŸ”§ Customization
 
 ### Change Background Image
 Edit `index.html` line 13:
@@ -88,6 +88,7 @@ Edit the CSS in `index.html` and `Greeting.html` to customize:
 - Button colors
 - Theme colors
 
-## 📄 License
+## ðŸ“„ License
 
 This project is for internal help file management and documentation purposes.
+
