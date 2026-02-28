@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank Alfalah Help System - Version 2</title>
+    <title>Bank Alfalah Help File</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -35,12 +35,12 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .btn {
+        .version-btn {
             display: block;
             width: 100%;
             padding: 20px;
             margin: 15px 0;
-            background: linear-gradient(45deg, #e67e22, #d35400);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             text-decoration: none;
             border-radius: 10px;
@@ -50,15 +50,24 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .btn:hover {
-            background: linear-gradient(45deg, #d35400, #e67e22);
+        .version-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
-        .back-btn {
-            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
-            margin-top: 20px;
+        .version-btn.version1 {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+        }
+
+        .version-btn.version2 {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        .version-btn i {
+            display: block;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
 
         footer {
@@ -70,27 +79,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>📱 Version 2 (Enhanced)</h1>
+        <h1>🏦 Bank Alfalah Help System</h1>
 
-        <a href="2Canned Basic.htm" class="btn">
-            💬 Canned Basic Responses
+        <a href="version1/index.html" class="version-btn version1">
+            📚 Version 1 (Standard)
+            <small>OLD VERSION</small>
         </a>
 
-        <a href="2Whatsappbot.htm" class="btn">
-            🤖 WhatsApp BOT Guide
-        </a>
-
-        <a href="2internetbanking.htm" class="btn">
-            🏦 New Alfa App Guide
-        </a>
-
-        <a href="../" class="btn back-btn">
-            ◀ Back to Main Menu
+        <a href="version2/index.html" class="version-btn version2">
+            📱 Version 2 (Enhanced)
+            <small>NEW VERSION</small>
         </a>
 
         <footer>
-            <p>Bank Alfalah Help System - Version 2</p>
-            <p>No Authentication Required</p>
+            <p>Offline Help System - No Authentication Required</p>
         </footer>
     </div>
 </body>
