@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help File Web Version</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+<link rel="stylesheet" href="css/discoCursor.css">
+
+    <style>
+        .welcome {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 20px;
+		font-weight: bold;
+		text-transform: uppercase; /* Makes the text uppercase */
+    		font-family: Arial, sans-serif; /* Font styling */
+		letter-spacing: 1px;
+            color: #333;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333; /* Dark gray text */
+            background: #dfe0e3; /* Light off-white background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Header */
+        header {
+            background: linear-gradient(180deg, #ffffff, #b5b5b5); /* White background for header */
+            color: #333; /* Dark gray text */
+            padding: 20px 50px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9); /* Subtle shadow */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Main Section */
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 120px 20px 20px; /* Offset header */
+            gap: 20px;
+            flex: 1;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 120px; /* Offset the fixed header */
+            left: 0;
+            background: linear-gradient(180deg, #ffffff, #b5b5b5);  /* White background */
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 8px 0 20px rgba(0, 0, 0, 0.5); /* Light shadow */
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .sidebar a {
+            color: #555; /* Soft dark gray text */
+            font-size: 1.2rem;
+            margin: 15px 0;
+            display: block;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background: linear-gradient(180deg, #065c67, black); /* Soft blue */
+            padding-left: 15px;
+            color: white;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            min-width: 260px;
+            z-index: 200;
+        }
+
+        .dropdown-content a {
+            padding: 7px;
+            color: #555;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #00bcd4;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Main Content Area */
+        .content {
+            flex: 1;
+            margin-left: 270px; /* To avoid overlap with sidebar */
+            padding: 20px;
+            background: #ffffff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333; /* Dark gray */
+        }
+
+        /* Calculator Styles */
+        .calculator {
+            background: #f4f4f9; /* Light background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+      
+            text-align: center;
+        }
+
+        .calculator-screen {
+            background-color: #333;
+            color: white;
+            font-size: 2rem;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            min-height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #eee;
+            border: none;
+            padding: 20px;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ccc;
+        }
+
+        .operator {
+            background-color: #065c67; /* Blue-green for operators */
+            color: white;
+        }
+
+        .operator:hover {
+            background-color: #033f44; /* Darker shade for hover */
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Footer Section */
+        footer {
+            background: #ffffff; /* White background */
+            color: #333; /* Dark gray text */
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+        }
+
+        footer a {
+            color: #00bcd4; /* Soft blue text */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+.current-time {
+    position: absolute;
+    top: 10px;
+    left: 20px; /* Adjust this value based on your layout */
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+    </style>
+    <style type="text/css">
+        a.nounderline {text-decoration: none; }
+    </style>
+
+
+<style>
+/* Style the datetime input fields */
+.styled-datetime {
+    font-family: 'Arial', sans-serif; /* Modern font */
+    font-size: 16px; /* Font size */
+    padding: 12px; /* Padding inside input */
+    border-radius: 25px; /* Rounded corners */
+    border: 1px solid #ccc; /* Light gray border */
+    background-color: #cde9e9; /* Clean white background */
+    color: #333; /* Dark text for readability */
+    width: 260px; /* Set a consistent width */
+    transition: all 0.3s ease-in-out; /* Smooth transition effect */
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+/* Focus effect with a cool blue glow */
+.styled-datetime:focus {
+    outline: none; /* Remove the default focus outline */
+    background-color: #f8f8f8; /* Subtle background change */
+    border: 1px solid #4CAF50; /* Green border on focus */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* Green glow */
+}
+
+/* Adjust the label's styling */
+label {
+    font-size: 16px; /* Slightly larger font size */
+    color: #444; /* Darker color for label */
+    font-weight: bold; /* Make the label bold */
+    margin-bottom: 5px; /* Space between label and input */
+    display: inline-block; /* Make the label align properly with the input */
+}
+
+/* Add some space between the input fields */
+br {
+    margin-bottom: 15px; /* Spacing between inputs */
+}
+
+
+/* Hide the default file input */
+.file-upload {
+    display: none; /* Hides the original file input button */
+}
+
+/* Hide the default file input */
+.file-upload {
+    display: none; /* Hides the original file input button */
+}
+
+/* Hide the default file input */
+.file-upload {
+    display: none; /* Hides the original file input button */
+}
+
+/* Stylish custom button for file upload */
+.file-upload-label {
+    display: inline-block;
+    padding: 06px 15px; /* Padding for the button */
+    background: linear-gradient(135deg, #065c67, #38a3a5); /* Gradient from teal to cyan */
+    color: white; /* White text */
+    font-size: 13px; /* Font size */
+    font-weight: bold; /* Bold text */
+    border-radius: 25px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor to indicate interactivity */
+    transition: all 0.3s ease; /* Smooth transition for hover and focus effects */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Slight spacing for the text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Hover effect for the button */
+.file-upload-label:hover {
+    background: linear-gradient(135deg, #38a3a5, #065c67); /* Reverse gradient on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+/* Focus effect (when the file input is active) */
+.file-upload:focus + .file-upload-label {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 10px rgba(38, 163, 165, 0.8); /* Glowing effect with the teal shade */
+}
+
+/* File upload text */
+.file-upload-text {
+    display: inline-block;
+    padding-right: 0px; /* Space for the icon */
+}
+
+/* Optional: Adding an icon to make the button cooler */
+.file-upload-label::before {
+    content: "📂"; /* Folder icon */
+    font-size: 20px; /* Icon size */
+    margin-right: 0px; /* Space between icon and text */
+    vertical-align: middle; /* Align the icon with the text */
+}
+
+/* Style when a file is selected */
+.file-upload-label.uploaded {
+    background: linear-gradient(135deg, #670606, #065c67); /* Reverse gradient for uploaded state */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow to indicate upload complete */
+    cursor: default; /* Disable cursor to show it’s no longer clickable */
+}
+
+/* Drag & Drop Box Styling */
+.drag-drop-area {
+    border: 3px dashed #38a3a5;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background: #f8f8f8;
+    cursor: pointer;
+    transition: all 0.9s ease;
+}
+
+/* Jab File Drag Ho */
+.drag-drop-area.dragging {
+    background: #cde9e9;
+    border-color: #065c67;
+}
+
+/* Jab File Upload Ho Jaye */
+.drag-drop-area.uploaded {
+    background: linear-gradient(135deg, #007483, #216126);
+    color: white;
+    border-color: #ffffff00;
+}
+
+/* Loading Bar */
+#progress-container {
+    width: 100%;
+    background: linear-gradient(135deg, #065c67, #38a3a5);
+    border-radius: 10px;
+    margin-top: 10px;
+    display: none;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 10px;
+    background: linear-gradient(135deg, #065c67, #38a540);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+#progress-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+</style>
+
+
+</head>
+<body>
+
+    <!-- Fixed Header -->
+    <header>
+    <div class="welcome" id="welcomeMessage"></div>
+    <div id="currentTime" class="current-time"></div> <!-- New element for time -->
+
+<a href="2othercanned.htm" class="nounderline" target="_self"; style="background-color:#00a4ff; color:#333";><h1>Help File Web Version</h1></a>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <a href="greeting.html">Greetings</a>
+            <div class="dropdown">
+            <a href="canned basic.htm">Canned Basic🔻</a>
+                <div class="dropdown-content">
+                    <a href="cbcomplaint.htm">Complaint</a>
+                    <a href="cbordertrack.htm">Order Track</a>
+                    <a href="cbcnic.htm">CNIC Expiry</a>
+                    <a href="cbalfamall.htm">Alfa Mall</a>
+                    <a href="cbcclimit.htm">Credit Card Limit</a>
+                    <a href="cbdcfee.htm">Debit Card Annual Fee</a>
+                    <a href="cbdcreplacement.htm">Debit Card Replacement Fee</a>
+                    <a href="cbccannualfee.htm">Credit Card Annual Fee</a>
+                    <a href="cbccspending.htm">Credit Card Spending</a>
+                    <a href="cbcclimit's.htm">Credit Card Limits</a>
+                </div>
+            </div>
+            <div class="dropdown">
+            <a href="whatsappbot.htm">WhatsApp BOT🔻</a>
+                <div class="dropdown-content">
+                    <a href="wbaccbalance.htm">Account Balance</a>
+                    <a href="wbaccstatement.htm">Account Statement</a>
+                    <a href="wbccbalance.htm">Credit Card Balance</a>
+                    <a href="wbccstatement.htm">Credit Card Statement</a>
+                    <a href="wbdcblocking.htm">Debit Card Blocking</a>
+                    <a href="wbccactivation.htm">Credit Card Activation</a>
+                    <a href="wbdcactivationenglish.htm">Debit Card Activation</a>
+                </div>
+            </div>
+            <a href="internetbanking.htm">New Alfa App</a>
+            <a href="linkscanned.htm">Links Canned</a>
+            <a href="orbitscanned.htm">Orbits Canned</a>
+            <a href="walletcanned.htm">Wallet Canned</a>
+            <a href="cannedmemo.htm">Canned Memo</a>
+            <a href="leadoffering.htm">Lead Offering</a>
+            <div class="dropdown">
+            <a href="othercanned.htm" style="background: linear-gradient(180deg, #065c67, black); color: white;">Other Canned🔻</a>
+                <div class="dropdown-content">
+                    <a href="cre1.htm">Zohaib Canned</a>
+                    <a href="fcre1.htm">Arsalan Canned</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Main Content Area -->
+<!-- Main Content Area -->
+
+<div class="content">
+    <!-- Flex container for side-by-side layout -->
+    <div style="display: flex; gap: 30px; justify-content: space-between;">
+
+    <div style="background: linear-gradient(135deg, #ffffff, #428982); padding: 30px; border-radius: 10px; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); width: 48%; max-width: 400px;">
+ <h4>Upload Excel File to Calculate Service Level</h4>
+
+    <!-- File Upload Form -->
+<!-- Drag & Drop Box -->
+<br><br>
+<div id="drag-drop-area" class="drag-drop-area">
+    Drop Your File Here or Click to Upload
+</div>
+
+<!-- Hidden File Input (Jo Backend Mein Kaam Karega) -->
+<input type="file" id="file-input" class="file-upload" accept=".xlsx, .xls" style="display: none;">
+
+    <br><br>
+ <!-- Loading Bar -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <p id="progress-text">Loading...</p>
+
+    <br>
+    <!-- Start and End Date-Time Selection -->
+<label for="start-datetime">Select Start Date + Time:</label>
+<input type="datetime-local" id="start-datetime" class="styled-datetime" />
+<br><br>
+<label for="end-datetime">Select End Date + Time:</label>
+<input type="datetime-local" id="end-datetime" class="styled-datetime" />
+<br><br>
+    
+    <button onclick="calculateServiceLevel()" style="background: linear-gradient(135deg, #065c67, #38a3a5); color: white; padding: 7px 15px; border: none; border-radius: 25px; font-size: 1.2rem; cursor: pointer; transition: background 0.3s ease;" class="button button1" data-sound="sound1">Calculate Service Level</button>
+    
+    <!-- Display Results -->
+<br><br>
+    <h3>Results:</h3>
+    <p>Total Chats: <span id="total-chats">0</span></p>
+    <p>Chats Answered Within 20 Seconds: <span id="answered-within-20-seconds">0</span></p>
+    <p>Service Level: <span id="service-level">0%</span></p>
+</div>
+        <!-- Stylish Attendance Calculator -->
+        <div class="attendance-calculator" style="background: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); width: 48%; max-width: 400px;">
+            <h2 style="font-size: 1.8rem; color: #333; margin-bottom: 20px; text-align: center;">Attendance Calculator</h2>
+            <div style="margin-bottom: 20px;">
+                <label for="totalScheduled" style="font-size: 1rem; color: #555;"><b>Total Scheduled Officers:</b></label>
+                <input type="number" id="totalScheduled" placeholder="Enter total scheduled officers" style="width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ddd; font-size: 1rem; margin-top: 5px;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="totalPresent" style="font-size: 1rem; color: #555;"><b>Total Present Officers:</b></label>
+                <input type="number" id="totalPresent" placeholder="Enter total present officers" style="width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ddd; font-size: 1rem; margin-top: 5px;">
+            </div>
+            <div style="text-align: center;">
+                <button onclick="calculateShrinkage()" style="background: linear-gradient(135deg, #065c67, #38a3a5); color: white; padding: 12px 30px; border: none; border-radius: 25px; font-size: 1.2rem; cursor: pointer; transition: background 0.3s ease;" class="button button1" data-sound="sound1">Calculate Shrinkage Percentage</button>
+            </div>
+            <div id="shrinkageResult" style="margin-top: 20px; font-size: 1.2rem; color: #333; font-weight: bold; text-align: center;"></div>
+        </div>
+
+        <!-- Stylish Calculator -->
+        <div class="calculator" style="width: 48%; max-width: 400px; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);">
+            <div class="calculator-screen" id="screen" style="background-color: #333; color: white; font-size: 2rem; padding: 20px; border-radius: 5px; margin-bottom: 20px; min-height: 50px; display: flex; justify-content: center; align-items: center; " >
+                0
+            </div>
+            <div class="calculator-buttons" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                <button class="button" onclick="appendNumber('1')">1</button>
+                <button class="button" onclick="appendNumber('2')">2</button>
+                <button class="button" onclick="appendNumber('3')">3</button>
+                <button class="button operator" onclick="appendOperator('+')">+</button>
+
+                <button class="button" onclick="appendNumber('4')">4</button>
+                <button class="button" onclick="appendNumber('5')">5</button>
+                <button class="button" onclick="appendNumber('6')">6</button>
+                <button class="button operator" onclick="appendOperator('-')">-</button>
+
+                <button class="button" onclick="appendNumber('7')">7</button>
+                <button class="button" onclick="appendNumber('8')">8</button>
+                <button class="button" onclick="appendNumber('9')">9</button>
+                <button class="button operator" onclick="appendOperator('*')">*</button>
+
+                <button class="button" onclick="appendNumber('0')">0</button>
+                <button class="button" onclick="appendDecimal()">.</button>
+                <button class="button" onclick="clearScreen()">C</button>
+                <button class="button operator" onclick="appendOperator('/')">/</button>
+
+                <button class="button operator" onclick="toggleSign()">±</button>
+                <button class="button" onclick="calculatePercentage()">%</button>
+                <button class="button" onclick="calculateSquareRoot()">√</button>
+                <button class="button operator" onclick="calculateResult()">=</button>
+
+                <button class="button" onclick="backspace()">←</button>
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+    </main>
+
+
+
+    <script>
+        // Calculator Functionality
+        let currentInput = '0';
+        let operator = null;
+        let previousInput = null;
+
+        function appendNumber(number) {
+            if (currentInput === '0') {
+                currentInput = number;
+            } else {
+                currentInput += number;
+            }
+            updateScreen();
+        }
+
+        function appendOperator(op) {
+            if (operator !== null) return; // Prevent multiple operators in a row
+            operator = op;
+            previousInput = currentInput;
+            currentInput = '';
+        }
+
+        function appendDecimal() {
+            if (currentInput.includes('.')) return; // Prevent multiple decimals
+            currentInput += '.';
+            updateScreen();
+        }
+
+        function toggleSign() {
+            currentInput = (parseFloat(currentInput) * -1).toString();
+            updateScreen();
+        }
+
+        function backspace() {
+            currentInput = currentInput.slice(0, -1);
+            if (currentInput === '') currentInput = '0';
+            updateScreen();
+        }
+
+        function calculatePercentage() {
+            currentInput = (parseFloat(currentInput) / 100).toString();
+            updateScreen();
+        }
+
+        function calculateSquareRoot() {
+            currentInput = Math.sqrt(parseFloat(currentInput)).toString();
+            updateScreen();
+        }
+
+        function calculateResult() {
+            if (operator === null || previousInput === null) return;
+
+            let result;
+            switch (operator) {
+                case '+':
+                    result = parseFloat(previousInput) + parseFloat(currentInput);
+                    break;
+                case '-':
+                    result = parseFloat(previousInput) - parseFloat(currentInput);
+                    break;
+                case '*':
+                    result = parseFloat(previousInput) * parseFloat(currentInput);
+                    break;
+                case '/':
+                    result = parseFloat(previousInput) / parseFloat(currentInput);
+                    break;
+                default:
+                    return;
+            }
+
+            currentInput = result.toString();
+            operator = null;
+            previousInput = null;
+            updateScreen();
+        }
+
+        function clearScreen() {
+            currentInput = '0';
+            operator = null;
+            previousInput = null;
+            updateScreen();
+        }
+
+        function updateScreen() {
+            document.getElementById('screen').textContent = currentInput;
+        }
+    </script>
+
+<script>
+    function calculateShrinkage() {
+        const totalScheduled = document.getElementById('totalScheduled').value;
+        const totalPresent = document.getElementById('totalPresent').value;
+
+        // Check if values are valid numbers
+        if (totalScheduled && totalPresent && totalScheduled > 0) {
+            // Calculate shrinkage percentage
+            const shrinkage = ((totalScheduled - totalPresent) / totalScheduled) * 100;
+            document.getElementById('shrinkageResult').innerHTML = `Shrinkage Percentage: ${shrinkage.toFixed(2)}%`;
+        } else {
+            document.getElementById('shrinkageResult').innerHTML = 'Please enter valid numbers for both fields.';
+        }
+    }
+</script>
+
+<audio id="sound1" src="\\10.144.66.128\Syed Danish\HELP FILE WEB VERSION\calc.mp3" preload="auto"></audio>
+		
+
+    <script>
+        const buttons = document.querySelectorAll('.button1');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const soundId = button.getAttribute('data-sound');
+                const sound = document.getElementById(soundId);
+                sound.currentTime = 0; // Reset sound to start
+                sound.play(); // Play the sound
+            });
+        });
+    </script>
+
+<script>
+        // Retrieve the username from localStorage
+        const username = localStorage.getItem('username');
+
+        // If username exists, display the welcome message
+        if (username) {
+            document.getElementById('welcomeMessage').innerText = `Welcome: ${username}`;
+        } else {
+            document.getElementById('welcomeMessage').innerText = 'Welcome: Guest';
+        }
+    </script>
+
+<script>
+// Function to update the time
+function updateTime() {
+    const timeElement = document.getElementById('currentTime');
+    const now = new Date();
+
+    // Format time as HH:MM:SS
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    const timeString = `${hours}:${minutes}:${seconds}`;
+
+    timeElement.innerText = timeString;
+}
+
+// Call updateTime every second
+setInterval(updateTime, 1000);
+
+// Initialize the time immediately on page load
+updateTime();
+</script>
+
+<script src="js/discoCursor.js"></script>
+
+
+
+   <script>
+        let fileData = null;
+
+        // Handle file upload
+        document.getElementById('file-input').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+
+    if (file) {
+        // Show loading bar
+        document.getElementById('progress-container').style.display = "block";
+        document.getElementById('progress-text').style.display = "block";
+        document.getElementById('progress-bar').style.width = "0%";
+        document.getElementById('progress-text').textContent = "Processing file...";
+
+        const reader = new FileReader();
+        
+        reader.onprogress = function(event) {
+            if (event.lengthComputable) {
+                let percentLoaded = Math.round((event.loaded / event.total) * 100);
+                document.getElementById('progress-bar').style.width = percentLoaded + "%";
+                document.getElementById('progress-text').textContent = "Loading " + percentLoaded + "%";
+            }
+        };
+
+        reader.onload = function(e) {
+            setTimeout(() => {
+                const data = e.target.result;
+                const workbook = XLSX.read(data, { type: 'binary' });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                fileData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+                // Hide loading bar when file is fully loaded
+                document.getElementById('progress-container').style.display = "none";
+                document.getElementById('progress-text').style.display = "none";
+
+                // Change label to show file is uploaded
+                fileUploadLabel.classList.add('uploaded');
+                fileUploadLabel.querySelector('.file-upload-text').textContent = 'File Uploaded';
+                
+                console.log(fileData); // Debugging purpose
+            }, 500); // Small delay for better UI experience
+        };
+
+        reader.readAsBinaryString(file);
+    }
+});
+
+
+// Calculate service level
+function calculateServiceLevel() {
+    if (!fileData) {
+        alert("Please upload a file first.");
+        return;
+    }
+
+    // Get the selected start and end date-times
+    const startDatetime = document.getElementById('start-datetime').value;
+    const endDatetime = document.getElementById('end-datetime').value;
+
+    if (!startDatetime || !endDatetime) {
+        alert("Please select both Start Date and End Date.");
+        return;
+    }
+
+    const startDate = new Date(startDatetime);
+    const endDate = new Date(endDatetime);
+
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+        alert("Invalid date-time format selected.");
+        return;
+    }
+
+    // Identify columns: "First Agent Response", "Handed over at", "Agent Name"
+    const header = fileData[0];
+    const firstAgentResponseIndex = header.indexOf("First Agent Response");
+    const handedOverAtIndex = header.indexOf("Handed over at");
+    const agentNameIndex = header.indexOf("Agent Name");
+
+    if (firstAgentResponseIndex === -1 || handedOverAtIndex === -1 || agentNameIndex === -1) {
+        alert("Required columns not found in the file.");
+        return;
+    }
+
+    let totalChats = 0;
+    let answeredWithin20Seconds = 0;
+
+    // Process the data row by row
+    for (let i = 1; i < fileData.length; i++) {
+        const row = fileData[i];
+        const firstAgentResponse = row[firstAgentResponseIndex];
+        const handedOverAt = row[handedOverAtIndex];
+        const agentName = row[agentNameIndex];
+
+        // Skip rows with specific agent names
+        if (agentName === "BAFL TEST" || agentName === "WA-Live") {
+            continue; // Skip this row and move to the next
+        }
+
+        // Check if both fields are not empty or dashes
+        if (firstAgentResponse && handedOverAt && firstAgentResponse !== "-" && handedOverAt !== "-") {
+
+            // Strip any extra spaces or invalid characters (e.g., dashes or blank spaces)
+            const cleanFirstAgentResponse = firstAgentResponse.trim();
+            const cleanHandedOverAt = handedOverAt.trim();
+
+            // Convert the date strings into Date objects
+            let firstAgentDate = new Date(cleanFirstAgentResponse);
+            let handedOverDate = new Date(cleanHandedOverAt);
+
+            // Check if both date conversions are successful
+            if (isNaN(firstAgentDate.getTime()) || isNaN(handedOverDate.getTime())) {
+                console.error(`Invalid date in row ${i}: First Agent Response = ${cleanFirstAgentResponse}, Handed Over At = ${cleanHandedOverAt}`);
+                continue; // Skip invalid rows
+            }
+
+            // Ensure that the "First Agent Response" is always before "Handed Over At"
+            if (firstAgentDate > handedOverDate) {
+                let temp = firstAgentDate;
+                firstAgentDate = handedOverDate;
+                handedOverDate = temp;
+            }
+
+            // Filter rows based on selected date range for total chats count
+            if (firstAgentDate >= startDate && firstAgentDate <= endDate) {
+                totalChats++; // Count all chats within the date range
+
+                // Check if the response was within 20 seconds
+                const timeDifference = (handedOverDate - firstAgentDate) / 1000;
+
+                // Debug: Display the time difference calculation
+                console.log(`Row ${i} - Time Difference: ${timeDifference} seconds`);
+
+                // Round time difference to the nearest second for consistency
+                const roundedTimeDifference = Math.round(timeDifference);
+
+                // Count if answered within 20 seconds
+                if (roundedTimeDifference <= 20) {
+                    answeredWithin20Seconds++; // Count chats answered within 20 seconds
+                }
+            }
+        }
+    }
+
+    // Calculate service level
+    const serviceLevel = totalChats > 0 ? (answeredWithin20Seconds / totalChats) * 100 : 0;
+
+    // Display results
+    document.getElementById("total-chats").textContent = totalChats;
+    document.getElementById("answered-within-20-seconds").textContent = answeredWithin20Seconds;
+    document.getElementById("service-level").textContent = serviceLevel.toFixed(2) + "%";
+}
+
+
+// Select the file input and the label
+const fileInput = document.getElementById('file-input');
+const fileUploadLabel = document.getElementById('file-upload-label');
+
+// Event listener for file input change
+fileInput.addEventListener('change', function () {
+    if (fileInput.files.length > 0) {
+        // Change the label style when a file is uploaded
+        fileUploadLabel.classList.add('uploaded');
+        // Change the text of the label
+        fileUploadLabel.querySelector('.file-upload-text').textContent = 'File Uploaded';
+    } else {
+        // Reset the label style if no file is uploaded
+        fileUploadLabel.classList.remove('uploaded');
+        fileUploadLabel.querySelector('.file-upload-text').textContent = 'Choose a File';
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const dragDropArea = document.getElementById("drag-drop-area");
+    const fileInput = document.getElementById("file-input");
+
+    // Jab Click Kiya Jaye to File Picker Open Ho
+    dragDropArea.addEventListener("click", function () {
+        fileInput.click();
+    });
+
+    // Jab File Choose Ho to Process Kare
+    fileInput.addEventListener("change", function (event) {
+        processFile(event.target.files[0]);
+    });
+
+    // Drag Enter & Drag Over (Box Ko Highlight Karega)
+    dragDropArea.addEventListener("dragover", function (event) {
+        event.preventDefault();
+        dragDropArea.classList.add("dragging");
+    });
+
+    // Drag Leave (Highlight Remove Karega)
+    dragDropArea.addEventListener("dragleave", function () {
+        dragDropArea.classList.remove("dragging");
+    });
+
+    // File Drop Karne Par
+    dragDropArea.addEventListener("drop", function (event) {
+        event.preventDefault();
+        dragDropArea.classList.remove("dragging");
+
+        // File Pick Karna
+        let files = event.dataTransfer.files;
+        if (files.length > 0) {
+            processFile(files[0]);
+        }
+    });
+
+    // File Process Karne Ka Function
+    function processFile(file) {
+        if (!file) return;
+
+        // Sirf Excel Files Allow Karni Hein
+        const allowedExtensions = ["xlsx", "xls"];
+        const fileExtension = file.name.split(".").pop().toLowerCase();
+        
+        if (!allowedExtensions.includes(fileExtension)) {
+            alert("Please upload a valid Excel file (.xlsx, .xls)");
+            return;
+        }
+
+    // **Loading Bar Show Karna**
+    document.getElementById('progress-container').style.display = "block";
+    document.getElementById('progress-text').style.display = "block";
+    document.getElementById('progress-bar').style.width = "0%";
+    document.getElementById('progress-text').textContent = "Processing file...";
+
+        // File Ko Read Karna
+        const reader = new FileReader();
+        
+    reader.onprogress = function(event) {
+        if (event.lengthComputable) {
+            let percentLoaded = Math.round((event.loaded / event.total) * 100);
+            document.getElementById('progress-bar').style.width = percentLoaded + "%";
+            document.getElementById('progress-text').textContent = "Loading " + percentLoaded + "%";
+        }
+    };
+
+        reader.onload = function (e) {
+     setTimeout(() => {
+            const data = e.target.result;
+            const workbook = XLSX.read(data, { type: "binary" });
+            const sheet = workbook.Sheets[workbook.SheetNames[0]];
+            fileData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+           // **Loading Bar Hide Karna Jab File Load Ho Jaye**
+            document.getElementById('progress-container').style.display = "none";
+            document.getElementById('progress-text').style.display = "none";
+
+            // UI Update Karega
+            dragDropArea.classList.add("uploaded");
+            dragDropArea.innerHTML = "File Uploaded";
+            console.log(fileData); // Debugging
+        }, 500);
+        };
+
+        reader.readAsBinaryString(file);
+    }
+});
+
+
+    </script>
+
+
+</body>
+</html>

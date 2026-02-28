@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help File Web Version</title>
+    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333; /* Dark gray text */
+            background: #dfe0e3; /* Light off-white background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Header */
+        header {
+            background: linear-gradient(180deg, #ffffff, #b5b5b5); /* White background for header */
+            color: #333; /* Dark gray text */
+            padding: 20px 50px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9); /* Subtle shadow */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Main Section */
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 120px 20px 20px; /* Offset header */
+            gap: 20px;
+            flex: 1;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 120px; /* Offset the fixed header */
+            left: 0;
+            background: linear-gradient(180deg, #ffffff, #b5b5b5);  /* White background */
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 8px 0 20px rgba(0, 0, 0, 0.5); /* Light shadow */
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .sidebar a {
+            color: #555; /* Soft dark gray text */
+            font-size: 1.2rem;
+            margin: 15px 0;
+            display: block;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background: linear-gradient(180deg, #065c67, black); /* Soft blue */
+            padding-left: 15px;
+            color: white;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            min-width: 180px;
+            z-index: 200;
+        }
+
+        .dropdown-content a {
+            padding: 10px;
+            color: #555;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #00bcd4;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            margin-left: 270px; /* To avoid overlap with sidebar */
+            padding: 20px;
+            background: #ffffff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333; /* Dark gray */
+        }
+
+        /* Cards Layout */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: #c2d1d3; /* Soft light gray */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer; /* Indicate that the card is clickable */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background-color: #8fc6cd; /* Soft blue on hover */
+            color: white;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: black; /* Soft dark gray text */
+        }
+
+        /* Footer Section */
+        footer {
+            background: #ffffff; /* White background */
+            color: #333; /* Dark gray text */
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+        }
+
+        footer a {
+            color: #00bcd4; /* Soft blue text */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                transform: translateX(-100%);
+                width: 100%;
+                height: auto;
+                top: 0;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            main {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .content {
+                margin-left: 0; /* Reset margin for mobile */
+            }
+
+            /* Fixing grid display on mobile */
+            .card-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            white-space: pre-wrap; /* Allows wrapping */
+            overflow-wrap: break-word; /* Breaks long words */
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Header -->
+    <header>
+        <h1>Help File Web Version</h1>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <a href="greeting.html">Greetings</a>
+            <div class="dropdown">
+                <a href="canned basic.htm">Canned Basic</a>
+                <div class="dropdown-content">
+                    <a href="cbcomplaint.htm">Complaint</a>
+                    <a href="ordertrack.htm">Order Track</a>
+                    <a href="cnicexpiry.htm">CNIC Expiry</a>
+                </div>
+            </div>
+            <a href="whatsappbot.htm">WhatsApp BOT</a>
+            <a href="internetbanking.htm">New Alfa App</a>
+            <a href="linkscanned.htm">Links Canned</a>
+            <a href="orbitscanned.htm">Orbits Canned</a>
+            <a href="walletcanned.htm">Wallet Canned</a>
+            <a href="cannedmemo.htm" style="background: linear-gradient(180deg, #065c67, black); color: white;">Canned Memo</a>
+            <a href="leadoffering.htm">Lead Offering</a>
+            <a href="othercanned.htm">Other Canned</a>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content">
+            <h2>Canned Memo</h2>
+           
+
+            <div class="card-container">
+                <div class="card"  onclick="copy_to_clipboard('1')" data-sound="sound1">
+                    <p id="1">Walaikum Assalam.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('2')">
+                    <b><p id="2">Dear Customer, how can I help you?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('3')">
+
+                    <b><p id="3">Dear Customer, anything else I can assist you with?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('4')">
+
+                    <b><p id="4">Dear Customer, Is there anything else that I can help you with?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('5')">
+
+                    <p id="5">Muaziz Saarif, mazeed kuch janna chahenge?</p>
+                </div>
+
+
+                <div class="card"  onclick="copy_to_clipboard('6')">
+
+                    <b><p id="6">Dear Customer, are you connected with us?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('7')">
+
+                    <p id="7">Muaziz Sarif, kia ap hamare sath connected hain?</p>
+                </div>
+
+
+                <div class="card"  onclick="copy_to_clipboard('8')">
+
+                    <b><p id="8">Dear Customer, please confirm do you want to check account balance or credit card balance?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('9')">
+
+                    <p id="9">Muaziz Saarif, ap account balance check karna chah rahe hen ya phir credit card balance?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('10')">
+
+                    <b><p id="10">Dear Customer, you can generate account statement through Alfa app / Internet banking or by calling our helpline 021/042 111 225 111.</p></b>
+                </div>
+
+ <div class="card"  onclick="copy_to_clipboard('11')">
+
+                    <p id="11">Muaziz Saarif, ap account statement generate kar sakte hen Alfa app / Internet banking aur hamari helpline 021/042 111 225 111 ke zariye.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('12')">
+
+                    <b><p id="12">I'm good, hope you are doing great too.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('13')">
+
+                    <p id="13">Kheriat se hen, umeed hai ap bhi kheriat se hounge.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('14')">
+
+                    <b><p id="14">Dear Customer, please confirm what would you like to know?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('15')">
+
+                    <p id="15">Muaziz Saarif, kya janna chahengy ap?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('16')">
+
+                    <b><p id="16">Dear Customer, kindly check the below given attachment in order to get complete information in this regard.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('17')">
+
+                    <p id="17">Muaziz Saarif, kindly di gai attachment check karlen is hawale se tamam information hasil karne ke liye.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('18')">
+
+                    <b><p id="18">Dear Customer, we are sorry for the inconvenience caused.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('19')">
+
+                    <p id="19">Takleef ke lye bhut mazrat chahengy.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('20')">
+
+                    <b><p id="20">Kindly confirm against which product would you like to register alfa app?
+
+Account/debit card/credit card/wallet or Roshan Digital Account?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('21')">
+
+                    <p id="21">Ap kis product ke against registration kar rahe hain?
+
+Account/debit card/credit card/orbits/wallet or Roshan Digital Account?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('22')">
+
+                    <b><p id="22">Dear Customer, can you please confirm against which product have you registered?
+
+Account/debit card/credit card/wallet or Roshan Digital Account?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('23')">
+
+                    <p id="23">Muaziz Saarif, apne register kis product se kya tha alfa app pe?
+
+Account/debit card/credit card/orbits /wallet or Roshan Digital Account?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('24')">
+
+                    <b><p id="24">Dear Customer, please confirm which account do you have in Bank Alfalah?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('25')">
+
+                    <p id="25">Muaziz Saarif, konsa account he apka Bank Alfalah men?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('26')">
+
+                    <b><p id="26">Dear Customer, please confirm the error that you are facing?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('27')">
+
+                    <p id="27">Muaziz Saarif, kya issue/ error arha hai?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('28')">
+
+                    <b><p id="28">Dear Customer, kindly clarify your query.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('29')">
+
+                    <p id="29">Muaziz Saarif, apna sawal wazeh kijiye.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('30')">
+
+                    <b><p id="30">Dear Customer, I request you to kindly call at our helpline in order to confirm the status in this regard. Our helpline number is 021/042 111 225 111.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('31')">
+
+                    <p id="31">Muaziz Saarif, ap kindly hamari helpline par raabta kar ke is bary men status confirm kijiye. Hamari helpline number hai 021/042 111 225 111.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('32')">
+
+                    <b><p id="32">Thank you for providing your details kindly wait our department/officer will contact you within 24 to 48 working hours in this regard.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('33')">
+
+                    <p id="33">Shukriya apni details provide krny ke lyae intizar kijiyga hamara concern department/officer apsy RDA account apply ke lye contact krelga 24 to 48 working hours ke doran.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('34')">
+
+                    <b><p id="34">Dear Customer, it could be a technical issue I request you to kindly change your web browser or try again after some time through the given link in order to resume your application. https://invest.bankalfalah.com/ops/ResumeApplication.aspx.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('35')">
+
+                    <p id="35">Muaziz Saarif, ye technical issue ki waja se ho sakta he ap apna web browser change karlen aur kuch der bad dubara try karen diye gae link ki madad se. https://invest.bankalfalah.com/ops/ResumeApplication.aspx</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('36')">
+
+                    <b><p id="36">Dear Customer, you can open it online through our website www.bankalfalah.com .</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('37')">
+
+                    <p id="37">Muaziz Saarif, ap online roshan digital account open kar sakte hen hamari web site ke zariye www.bankalfalah.com .</p>
+                </div>
+
+
+
+                <div class="card"  onclick="copy_to_clipboard('40')">
+
+                    <b><p id="40">Dear Customer, as per State Bank, you can only transfer Rupees 25,000, without any fee. If you cross limit of Rupees 25,000 then Rupees 0.1% or Rupees 200 whichever is lowest will be charge.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('41')">
+
+                    <p id="41">Muaziz Saarif, as per state bank ap transfer kar sakte hen 25,000 without any charges. agar ap 25,000 se ziyafa ki transaction karenge to apko 0.1% ya 200 rupess whichever is lowest charge honge.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('42')">
+
+                    <b><p id="42">We are arranging a call back for you in this regard, further you can also call at our helpline for service blocking. Moreover, it is to inform you that bank will not be liable in any case of misuse before blocking.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('43')">
+
+                    <b><p id="43">Dear Customer, please confirm in which type of loan you are interested?
+
+Home loan, Auto loan or Personal loan?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('44')">
+
+                    <p id="44">Muaziz Saarif, ap konsa loan hasil karna chah rahe hen?
+
+Home loan, Auto loan ya phir Personal loan?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('45')">
+
+                    <b><p id="45">Dear Customer, please confirm which type of account do you want to open?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('46')">
+
+                    <p id="46">Muaziz Saarif, ap konsa account open karna chah rahe hen?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('47')">
+
+                    <b><p id="47">Dear Customer, if you want to go back in main menu then we have to close this live chat.
+
+Should I close this chat for now?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('48')">
+
+                    <p id="48">Muaziz Saarif, agar ap main menu men jana chahte hen to phir apki ye live chat close karni hogi.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('49')">
+
+                    <b><p id="49">Please enter the first four digits after ALFH from your IBAN number then omit the "00". Then please enter the remaining last 10 digits of your IBAN number. A total of 14 digits must be entered.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('50')">
+
+                    <b><p id="50">Dear Customer, we don’t have access of this media kindly explain in text.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('51')">
+
+                    <p id="51">Muaziz Saarif, hamare pas audio check karne ki access nahi hoti he ap kindly type karke explain karen.</p>
+                </div>
+
+
+
+                <div class="card"  onclick="copy_to_clipboard('54')">
+
+                    <b><p id="54">Dear Customer, it could be your debit card delivery charges however I request you to kindly call at our helpline in order to confirm the status in this regard. Our 24/7 service helpline number is 0092 21 111 225 226.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('55')">
+
+                    <p id="55">Muaziz Saarif, ye apke debit card ke delivery charges ho sakte hen ap kindly hamari 24/7 service helpline 0092 21 111 225 226 ke zariye status confirm karlen.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('56')">
+
+                    <b><p id="56">Dear Customer, it could be a technical glitch in alfa app kindly uninstall your alfa app and download it again then try.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('57')">
+
+                    <p id="57">Muaziz Saarif, ye technical issue ki waja se ho sakta he kindly apni alfa app uninsall karke dubara download karlen phir try karen.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('58')">
+
+                    <b><p id="58">Dear Customers, you can use the Alfa app to perform biometric verification and increase the daily transaction limit to Rs 250,000 only. However if you want to use a higher daily limit based on you Alfa/Internet banking package, you will need to visit in Bank Alfalah branch for biometric verification.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('59')">
+
+                    <p id="59">Muaziz Saarif, alfa app se digital biometric verification kar ke Rs 250,000 tak ke transactions kar sakte hain in a day. Agar ap complete funds transfer limit avail karna chahte hain to phir nearest branch visit kar ke bhi biometric verification karwa sakte hain.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('60')">
+
+                    <b><p id="60">Dear Customer, SWIFT code is ALFHPKKAXXX and it is same for all branches.
+</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('61')">
+
+                    <p id="61">Muaziz Saarif, SWIFT code he ALFHPKKAXXX.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('62')">
+
+                    <b><p id="62">Dear Customer, please confirm do you have credit card or debit card?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('63')">
+
+                    <p id="63">Muaziz Saarif, apke pas credit card he ya phir debit card he?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('64')">
+
+                    <b><p id="64">Dear Customer, you can type expiry date in below given format.
+For Example: 202709 Year and month.
+2027 is year and 09 is month.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('65')">
+
+                    <p id="65">Muaziz Saarif, ap expiry date below given format men type kar sakte hen.
+For Example: 202709 Pehler year type karen phir month.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('66')">
+
+                    <b><p id="66">Dear Customer, I request you to kindly call at our helpline in order to confirm the status of your transaction or forward claim in this regard. Our helpline number is 021/042 111 225 111.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('67')">
+
+                    <p id="67">Muaziz Saarif, ap kindly hamari helpline par raabta kar ke is bary men status confirm kijiye apni transaction ka ya phir claim forward karwa sakte hen. Hamari helpline number hai 021/042 111 225 111.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('68')">
+
+                    <b><p id="68">Dear Customer, this issue has already been highlighted and our relevant team is working on it. Further, we cannot confirm any tentative timeline, but we ensure to resolve the issue on urgent basis. Your patience would be highly appreciated. For more information please call our helpline 021/042 111 225 111.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('69')">
+
+                    <p id="69">Muaziz Saarif, issue already highlighted he aur hamari team working kar rahi he, mazeed hum time ke hawale se confirm nahi kar sakte hen lekin umeed karte hen ke issue jald hi resolve hojaega. Mazeed malomat ke liye ap kindly hamari helpline 021/042 111 225 111 pe rabta karlen.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('70')">
+
+                    <b><p id="70">Dear Customer, you can check account number through alfa app / internet banking / Cheque book or you can also call our helpline 021/042 111 225 111 in this regard.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('71')">
+
+                    <p id="71">Muaziz Saarif, ap apna account number check kar sakte hen alfa app / internet banking / Cheque book ya phir hamari helpline 021/042 111 225 111 ke zariye.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('72')">
+
+                    <b><p id="72">Dear Customer, please confirm through which bank the money has been transferred?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('73')">
+
+                    <p id="73">Muaziz Saarif, konse bank ke zariye amount transfer kari gai he?</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('74')">
+
+                    <b><p id="74">Dear Customer, kindly type MNP and send it to 8287, or you can also call our helpline 021/042 111 225 111 in order to update in record.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('75')">
+
+                    <p id="75">Muaziz Saarif, kindly MNP type karen aur 8287 pe send karden ya phir ap hamari helpline 021/042 111 225 111 ke zariye bhi network update karwa sakte.</p>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('76')">
+
+                    <b><p id="76">Dear Customer, please confirm how many digits of account number you are trying to enter?</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('77')">
+
+                    <p id="77">Muaziz Saarif, ap account number ke kitne digits enter kar rahe hen?</p>
+                </div>
+
+
+                <div class="card"  onclick="copy_to_clipboard('78')">
+
+                    <b><p id="78">Monday to Thursday 09:00am to 05:00pm.
+Friday 09:00am to 05:00pm (Break for Prayer / Lunch from 1:00pm to 2:30pm).
+Saturday 10:00am to 02:00pm.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('79')">
+
+                    <b><p id="79">Dear Customer, kindly type NOSMS and send it to 8287 or you can also forward request through our helpline 021/042 111 225 111.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('80')">
+
+                    <p id="80">Muaziz Saarif, kindly NOSMS type karke 8287 pe SMS send karden iske ilawa ap hamari helpline 021/042 111 225 111 ke zariye bhi request forward karwa sakte hen.</p>
+                </div>
+
+
+                <div class="card"  onclick="copy_to_clipboard('38')">
+
+                    <b><p id="38">Dear Customer, to get your IBAN, you can follow the steps:
+• Visit the website https://www.bankalfalah.com/iban  then you will be able to generate IBAN number by entering your account number.
+• You can check IBAN number through alfa app / internet banking.
+• You can also get your IBAN number if you are having cheque book.
+• You can also call our helpline 021/042  111 225 111 to get your IBAN number.
+
+In order to check your IBAN / Branch Details through Alfa app please follow the below steps:
+Login> click on Overview option> See details> Your IBAN and branch details will show on display.
+</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('39')">
+
+                    <p id="39">Muaziz Saarif, ap diye gae options ke zariye apna IBAN number hasil kar sakte hen:
+• Diye gae link ke zariye apna account number enter karke IBAN number generate kar sakte hen. IBAN: https://www.bankalfalah.com/iban.
+• Ap alfa app/internet banking ke zariye bhi IBAN number check kar sakte hen.
+• Ap apni cheque book ke zariye bhi IBAN number hasil kar sakte hen.
+• Aur ap hamari helpline 021/042 111 225 111 ke zariye bhi IBAN number jan sakte hen.
+
+IBAN / Branch details Alfa app ke zariye check karne ke liye kindly below steps follow karlen:
+Login> click on Overview option> See details> Apkfa IBAN aur branch details show hojaengi.
+</p>
+                </div>
+
+
+                <div class="card"  onclick="copy_to_clipboard('52')">
+
+                    <b><p id="52">Dear Customer, you can visit the branch or use RAPID to open your account.
+For branchless banking you can use Alfa app, please go through the below link in order to know about range of accounts offered by Bank Alfalah. http://www.bankalfalah.com/personal-banking/deposit-accounts/
+
+For RAPID account, please use the following links.
+Conventional https://rapid.bankalfalah.com/AlfalahRapidPROD/Home.aspx
+Islamic https://rapid.bankalfalah.com/AlfalahRapidPROD/Index.aspx
+
+Moreover, if you want to open salaried and business account you need to visit branch. However, Roshan Digital Account can be opened online.
+Non-residents can apply for the product from the website https:www.bankalfalah.com and clicking “Open an account”, while residents can apply for it at the branch.</p></b>
+                </div>
+
+                <div class="card"  onclick="copy_to_clipboard('53')">
+
+                    <p id="53">Muaziz Saarif, Agar ap branch account open karna chahty hain to branch visit kr ke open kar skty hain ya Alfalah Rapid sy aur agar ap Alfa account kholna chahty hain to Alfa Application sy open ka skty hain. 
+Kindly diye gae link pe visit karlen is hawale se tafseelat hasil karne ke liye. http://www.bankalfalah.com/personal-banking/deposit-accounts/
+
+Aur Rapid ke through account open karny ke lye Conventional Banking and Islamic Banking ki link visit kjiye.
+CONV https://rapid.bankalfalah.com/AlfalahRapidPROD/Home.aspx
+IBG https://rapid.bankalfalah.com/AlfalahRapidPROD/Index.aspx
+
+Mazeed agar ap salaried ya business account open karna chahty hain to branch visit kijiye ya phir agar ap non-resident hain or Roshan Digital Account open krna chahty hain to link visit kijiye.
+https://invest.bankalfalah.com/ops/Index.html</p>
+                </div>
+
+
+
+                <!-- Repeat similar structure for other cards -->
+            </div>
+<br><p>Please note that Withholding tax has been implemented on cash withdrawal transactions for Non-filer.
+The rate of 0.6% will be charged on cash withdrawal transactions (ATM and Cash over the counter) 
+those whose name is not appearing in the active taxpayers list on the total amount of cash withdrawal in a day, exceeding Rs. 50,000. 
+
+·Withholding tax will be charged on cash withdrawal made through credit cards and Debit cards from ATMs.
+·Withholding tax will be charged on cash over the counter transactions. 
+·This tax will be implemented on cash withdrawn from ATM outside Pakistan against credit card issued in Pakistan. 
+
+WHT will not be implemented on:
+
+·Withholding tax will not be applicable on payment of cash at the counter of the bank against home remittances received from abroad. 
+·Withholding tax will not be applicable on cash withdrawal from ATM in Pakistan against credit card issued outside Pakistan.
+·Withholding tax will not be applicable on Foreign Currency Accounts of Non-filer.</p>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Company | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Copy to Clipboard Function
+        function copy_to_clipboard(elm_id) {
+            const text = document.getElementById(elm_id).innerText;
+            navigator.clipboard.writeText(text);
+
+        }
+    </script>
+
+
+
+</body>
+</html>

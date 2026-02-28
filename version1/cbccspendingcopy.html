@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help File Web Version</title>
+    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333; /* Dark gray text */
+            background: #dfe0e3; /* Light off-white background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+
+
+        /* Fixed Header */
+        header {
+            background: linear-gradient(180deg, #ffffff, #b5b5b5); /* White background for header */
+            color: #333; /* Dark gray text */
+            padding: 20px 50px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9); /* Subtle shadow */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Main Section */
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 120px 20px 20px; /* Offset header */
+            gap: 20px;
+            flex: 1;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 120px; /* Offset the fixed header */
+            left: 0;
+            background: linear-gradient(180deg, #ffffff, #b5b5b5);  /* White background */
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 8px 0 20px rgba(0, 0, 0, 0.5); /* Light shadow */
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .sidebar a {
+            color: #555; /* Soft dark gray text */
+            font-size: 1.2rem;
+            margin: 15px 0;
+            display: block;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background: linear-gradient(180deg, #065c67, black); /* Soft blue */
+            padding-left: 15px;
+            color: white;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            min-width: 260px;
+            z-index: 200;
+        }
+
+        .dropdown-content a {
+            padding: 7px;
+            color: #555;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #00bcd4;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Content Area */
+        .content {
+    flex: 1;
+    margin-left: 270px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    transition: box-shadow 0.3s ease-in-out;
+    height: 710px; /* Fixed height */
+}
+
+pre {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            white-space: pre-wrap; /* Allows wrapping */
+            overflow-wrap: break-word; /* Breaks long words */
+            color: black; /* Change the text color */
+            background: linear-gradient(60deg, #8fc6cd, white, #ffe9c1, white); /* Change the background color */
+            padding: 10px; /* Add padding for better readability */
+            border-radius: 5px; /* Add border radius for style */
+        }
+#c9dbdd
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333; /* Dark gray */
+        }
+
+        /* Cards Layout */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: #c2d1d3; /* Soft light gray */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer; /* Indicate that the card is clickable */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background-color: #8fc6cd; /* Soft blue on hover */
+            color: white;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: black; /* Soft dark gray text */
+        }
+
+        /* Footer Section */
+        footer {
+            background: #ffffff; /* White background */
+            color: #333; /* Dark gray text */
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+        }
+
+        footer a {
+            color: #00bcd4; /* Soft blue text */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                transform: translateX(-100%);
+                width: 100%;
+                height: auto;
+                top: 0;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            main {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .content {
+                margin-left: 0; /* Reset margin for mobile */
+            }
+
+            /* Fixing grid display on mobile */
+            .card-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            white-space: pre-wrap; /* Allows wrapping */
+            overflow-wrap: break-word; /* Breaks long words */
+}
+
+/* Style for the Copy button (image-based) */
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Scale and shadow effect on hover */
+.button:hover {
+    transform: scale(1.1); /* Enlarge the button */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for hover effect */
+}
+
+/* Optional: Add smooth transition to the image itself */
+.button img {
+    transition: transform 0.3s ease;
+}
+
+/* Scale the image when hovering on the button */
+.button:hover img {
+    transform: scale(1.1); /* Slightly enlarge the image */
+}
+
+
+
+    </style>
+<style>
+
+
+
+/* Style the tab */
+.tab {
+  float: left;
+  background-color: #f1f1f1;
+  width: 300px;
+  height: 70px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: #ffffff00;
+  color: black;
+  padding: 10px 14px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ffffff00;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background: linear-gradient(60deg, #8fc6cd, white);
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  width: 70%;
+  border-left: none;
+  height: 400px;
+  display: none;
+}
+
+/* Clear floats after the tab */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+
+
+    <!-- Fixed Header -->
+    <header>
+        <h1>Help File Web Version</h1>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <a href="greeting.html">Greetings</a>
+            <div class="dropdown">
+                <a href="canned basic.htm" style="background: linear-gradient(180deg, #065c67, black); color: white;">Canned Basic</a>
+                <div class="dropdown-content">
+                    <a href="cbcomplaint.htm">Complaint</a>
+                    <a href="ordertrack.htm">Order Track</a>
+                    <a href="cnicexpiry.htm">CNIC Expiry</a>
+                    <a href="cnicexpiry.htm">Alfa Mall</a>
+                    <a href="cnicexpiry.htm">Credit Card Limit</a>
+                    <a href="cnicexpiry.htm">Debit Card Annual Fee</a>
+                    <a href="cnicexpiry.htm">Debit Card Replacement Fee</a>
+                    <a href="cnicexpiry.htm">Credit Card Annual Fee</a>
+                    <a href="cnicexpiry.htm" style="background: linear-gradient(180deg, #065c67, black); color: white;">Credit Card Spending</a>
+                    <a href="cnicexpiry.htm">Credit Card Limits</a>
+                </div>
+            </div>
+            <a href="whatsappbot.htm">WhatsApp BOT</a>
+            <a href="internetbanking.htm">New Alfa App</a>
+            <a href="linkscanned.htm">Links Canned</a>
+            <a href="orbitscanned.htm">Orbits Canned</a>
+            <a href="walletcanned.htm">Wallet Canned</a>
+            <a href="cannedmemo.htm">Canned Memo</a>
+            <a href="leadoffering.htm">Lead Offering</a>
+            <a href="othercanned.htm">Other Canned</a>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content">
+<div class="tab" style="background-color:#ffffff00";>
+  <button class="tablinks" onmouseover="openCity(event, 'ip')"><b>IMPORTANT POINTS</b></button>
+  <button class="tablinks" onmouseover="openCity(event, 'pl')">VISA Platinum Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'plu')">VISA Platinum Credit Card (Urdu)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'mo')">Master Optimus Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'mou')">Master Optimus Credit Card (Urdu)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'uc')">Ultra Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'ucu')">Ultra Credit Card (Urdu)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'cc')">VISA Classic Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'ccu')">VISA Classic Credit Card (Urdu)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'gc')">VISA Gold Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'gcu')">VISA Gold Credit Card (Urdu)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'ps')">VISA Platinum Supp Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'psu')">VISA Platinum Supp Credit Card (Urdu)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'gsc')">VISA Gold Supp Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'gscu')">VISA Gold Supp Credit Card (Urdu)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'mos')">Master Optimus Supp Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'mosu')">Master Optimus Supp Credit Card (Urdu)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'csc')">VISA Classic Supp Credit Card (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'cscu')">VISA Classic Supp Credit Card (Urdu)</button>
+</div>
+
+<div id="ip" class="tabcontent">
+<hr><pre id="ip1" style="font-size:16px; font-family: bahnschrift;">
+◼ The customer must complete one of the two spending criteria for annual fee reversal.
+◼ The customer may apply for reversal on an annual basis after annual fee is charged.
+◼ The promotional period for spending starts after annual fee is charged to the account.
+◼ Spending may be performed on either Basic or Supplementary card. 
+◼ FED will not be reversed.
+◼ Only Retail Spend and Cash Advance will be considered as eligible spend. 
+◼ UBP, Alfa, QR transactions, Alfa Mall transactions, SBS, OSBS, COP, BTF are not included in spending.
+◼ Transactions with UBP under MCC '0' should be excluded from the spending of Credit card annual fee reversal criteria.
+◼ Only Retail Spend (POS & Ecommerce) and Cash Advance will be considered as eligible spend.
+◼ If Annual fee charged till 31 Dec,2023 than old spending criteria 2023, will be followed
+◼ For customers who are being charged with an old annual fee, they will have to follow the previous spending criteria. 
+◼ If a customer performs an e-commerce transaction for bill payment at the merchant’s website through their payment gateway, it will count for reversal
+◼ If a customer spends on Daraz or on any retail spend (POS/E-com) which later converts the amount in to SBS, accommodate such customers for annual fee reversals.
+◼ For annual fee reversal, Spending is cumulative and could be done on any card, either spend on Basic card or Supplementary card.
+◼ Customer have to complete the spending in 60 days and should inform the bank in total period of 90 days starting from the date of annual fee is charged. 
+◼ If transaction is in pipeline before 60-day period but posted after this period, it may be considered as total spend for Annual fee reversal. 
+</pre>
+<hr><br><button onclick="copy_to_clipboard('ip1')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+
+
+
+<div id="pl" class="tabcontent">
+<hr><pre id="a" style="font-size:16px; font-family: bahnschrift;">Dear Customer, as per criteria # 1 you have to spend PKR 200,000 within 60 days, and as per criteria # 2 you have to spend only PKR 120,000 within 60 days in order to forward request for annual fee reversal of your VISA Platinum credit card.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+You must have to complete one of the two spending criteria for annual fee reversal request.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('a')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="plu" class="tabcontent">
+<hr><pre id="b" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, VISA Platinum credit card ki annual fee charge hone ke bad as per criteria # 1 apko PKR 200,000 ki spending karni hogi within 60 days, aur as per criteria # 2 apko PKR 120,000 ki spending karni hogi within 60 days annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+Apko koi bhi ek spending criteria complete karnga hoga annual fee reversal ki request ke liye.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('b')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="mo" class="tabcontent">
+<hr><pre id="c" style="font-size:16px; font-family: bahnschrift;">Dear Customer, as per criteria # 1 you have to spend PKR 120,000 within 60 days, and as per criteria # 2 you have to spend only PKR 80,000 within 60 days in order to forward request for annual fee reversal of your Optimus credit card.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+You must have to complete one of the two spending criteria for annual fee reversal request.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('c')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="mou" class="tabcontent">
+<hr><pre id="d" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, Optimus credit card ki annual fee charge hone ke bad as per criteria # 1 apko PKR 120,000 ki spending karni hogi within 60 days, aur as per criteria # 2 apko PKR 80,000 ki spending karni hogi within 60 days annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+Apko koi bhi ek spending criteria complete karnga hoga annual fee reversal ki request ke liye.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('d')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="uc" class="tabcontent">
+<hr><pre id="e" style="font-size:16px; font-family: bahnschrift;">Dear Customer, you have to spend PKR 75,000 within 60 days in order to forward request for annual fee reversal of your Ultra credit card. For first year only.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('e')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="ucu" class="tabcontent">
+<hr><pre id="f" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, Ultra credit card ki annual fee charge hone ke bad within 60 days apko PKR 75,000 ki spending karni hogi annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('f')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="cc" class="tabcontent">
+<hr><pre id="g" style="font-size:16px; font-family: bahnschrift;">Dear Customer, as per criteria # 1 you have to spend PKR 40,000 within 60 days, and as per criteria # 2 you have to spend only PKR 25,000 within 60 days in order to forward request for annual fee reversal of your VISA Classic credit card.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+You must have to complete one of the two spending criteria for annual fee reversal request.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('g')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="ccu" class="tabcontent">
+<hr><pre id="h" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, VISA Classic credit card ki annual fee charge hone ke bad as per criteria # 1 apko PKR 40,000 ki spending karni hogi within 60 days, aur as per criteria # 2 apko PKR 25,000 ki spending karni hogi within 60 days annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+Apko koi bhi ek spending criteria complete karnga hoga annual fee reversal ki request ke liye.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('h')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="gc" class="tabcontent">
+<hr><pre id="i" style="font-size:16px; font-family: bahnschrift;">Dear Customer, as per criteria # 1 you have to spend PKR 85,000 within 60 days,  and as per criteria # 2 you have to spend only PKR 60,000 within 60 days in order to forward request for annual fee reversal of your VISA Gold credit card.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+You must have to complete one of the two spending criteria for annual fee reversal request.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('i')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="gcu" class="tabcontent">
+<hr><pre id="j" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, VISA Gold credit card ki annual fee charge hone ke bad as per criteria # 1 apko PKR 85,000 ki spending karni hogi within 60 days, aur as per criteria # 2 apko PKR 60,000 ki spending karni hogi within 60 days annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+Apko koi bhi ek spending criteria complete karnga hoga annual fee reversal ki request ke liye.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('j')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="ps" class="tabcontent">
+<hr><pre id="k" style="font-size:16px; font-family: bahnschrift;">Dear Customer, as per criteria # 1 you have to spend PKR 50,000 within 60 days, and as per criteria # 2 you have to spend only PKR 25,000 within 60 days in order to forward request for annual fee reversal of your VISA Platinum supplementary credit card.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+You must have to complete one of the two spending criteria for annual fee reversal request.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('k')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="psu" class="tabcontent">
+<hr><pre id="l" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, VISA Platinum supplementary credit card ki annual fee charge hone ke bad as per criteria # 1 apko PKR 50,000 ki spending karni hogi within 60 days, aur as per criteria # 2 apko PKR 25,000 ki spending karni hogi within 60 days annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+Apko koi bhi ek spending criteria complete karnga hoga annual fee reversal ki request ke liye.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('l')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="gsc" class="tabcontent">
+<hr><pre id="m" style="font-size:16px; font-family: bahnschrift;">Dear Customer, as per criteria # 1 you have to spend PKR 20,000 within 60 days, and as per criteria # 2 you have to spend only PKR 10,000 within 60 days in order to forward request for annual fee reversal of your VISA Gold supplementary credit card.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+You must have to complete one of the two spending criteria for annual fee reversal request.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('m')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="gscu" class="tabcontent">
+<hr><pre id="n" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, VISA Gold supplementary credit card ki annual fee charge hone ke bad as per criteria # 1 apko PKR 20,000 ki spending karni hogi within 60 days, aur as per criteria # 2 apko PKR 10,000 ki spending karni hogi within 60 days annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+Apko koi bhi ek spending criteria complete karnga hoga annual fee reversal ki request ke liye.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('n')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="mos" class="tabcontent">
+<hr><pre id="o" style="font-size:16px; font-family: bahnschrift;">Dear Customer, as per criteria # 1 you have to spend PKR 30,000 within 60 days, and as per criteria # 2 you have to spend only PKR 15,000 within 60 days in order to forward request for annual fee reversal of your Optimus supplementary credit card.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+You must have to complete one of the two spending criteria for annual fee reversal request.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('o')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="mosu" class="tabcontent">
+<hr><pre id="p" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, Optimus supplementary credit card ki annual fee charge hone ke bad as per criteria # 1 apko PKR 30,000 ki spending karni hogi within 60 days, aur as per criteria # 2 apko PKR 15,000 ki spending karni hogi within 60 days annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+Apko koi bhi ek spending criteria complete karnga hoga annual fee reversal ki request ke liye.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('p')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="csc" class="tabcontent">
+<hr><pre id="q" style="font-size:16px; font-family: bahnschrift;">Dear Customer, as per criteria # 1 you have to spend PKR 10,000 within 60 days, and as per criteria # 2 you have to spend only PKR 5,000 within 60 days in order to forward request for annual fee reversal of your VISA Classic supplementary credit card.
+
+You have to complete the spending in 60 days and should inform through our helpline 021/042 111 225 111 in total period of 90 days starting from the date of annual fee is charged.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+You must have to complete one of the two spending criteria for annual fee reversal request.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('q')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+<div id="cscu" class="tabcontent">
+<hr><pre id="r" style="font-size:16px; font-family: bahnschrift;">Muaziz Saarif, VISA Classic credit card ki annual fee charge hone ke bad as per criteria # 1 apko PKR 40,000 ki spending karni hogi within 60 days, aur as per criteria # 2 apko PKR 25,000 ki spending karni hogi within 60 days annual fee reversal ki request ke liye.
+
+Apko spending criteria 60 days men complete karna hoga aur total 90 days men ap hamari helpline 021/042 111 225 111 pe raba karke annual fee reversal ki request forward karwa sakte hen.
+
+Spending types for criteria # 1.
+Local POS
+Cash Advance
+International POS
+Local Ecommerce
+International Ecommerce
+
+Spending types for criteria # 2.
+International POS
+Local Ecommerce
+International Ecommerce
+
+Apko koi bhi ek spending criteria complete karnga hoga annual fee reversal ki request ke liye.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('r')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</div>
+
+
+
+<div class="clearfix"></div>
+ 
+</main>
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+  
+
+    <script>
+        // Copy to Clipboard Function
+        function copy_to_clipboard(elm_id) {
+            const text = document.getElementById(elm_id).innerText;
+            navigator.clipboard.writeText(text);
+
+        }
+    </script>
+<audio id="sound1" src="\\10.144.66.128\Syed Danish\HELP FILE WEB VERSION\calc.mp3" preload="auto"></audio>
+		
+
+    <script>
+        const buttons = document.querySelectorAll('.button1');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const soundId = button.getAttribute('data-sound');
+                const sound = document.getElementById(soundId);
+                sound.currentTime = 0; // Reset sound to start
+                sound.play(); // Play the sound
+            });
+        });
+    </script>
+</body>
+</html>

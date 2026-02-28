@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help File Web Version</title>
+    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+<link rel="stylesheet" href="css/discoCursor.css">
+
+    <style>
+        .welcome {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 20px;
+		font-weight: bold;
+		text-transform: uppercase; /* Makes the text uppercase */
+    		font-family: Arial, sans-serif; /* Font styling */
+		letter-spacing: 1px;
+            color: #333;
+        }
+
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333; /* Dark gray text */
+            background: #dfe0e3; /* Light off-white background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+
+
+        /* Fixed Header */
+        header {
+            background: linear-gradient(180deg, #ffffff, #b5b5b5); /* White background for header */
+            color: #333; /* Dark gray text */
+            padding: 20px 50px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9); /* Subtle shadow */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Main Section */
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 120px 20px 20px; /* Offset header */
+            gap: 20px;
+            flex: 1;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 120px; /* Offset the fixed header */
+            left: 0;
+            background: linear-gradient(180deg, #ffffff, #b5b5b5);  /* White background */
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 8px 0 20px rgba(0, 0, 0, 0.5); /* Light shadow */
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .sidebar a {
+            color: #555; /* Soft dark gray text */
+            font-size: 1.2rem;
+            margin: 15px 0;
+            display: block;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background: linear-gradient(180deg, #065c67, black); /* Soft blue */
+            padding-left: 15px;
+            color: white;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            min-width: 260px;
+            z-index: 200;
+        }
+
+        .dropdown-content a {
+            padding: 7px;
+            color: #555;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #00bcd4;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Content Area */
+        .content {
+    flex: 1;
+    margin-left: 270px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    transition: box-shadow 0.3s ease-in-out;
+    height: 800px; /* Fixed height */
+}
+
+pre {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            white-space: pre-wrap; /* Allows wrapping */
+            overflow-wrap: break-word; /* Breaks long words */
+            color: black; /* Change the text color */
+            background: linear-gradient(60deg, #8fc6cd, white, #ffe9c1, white); /* Change the background color */
+            padding: 10px; /* Add padding for better readability */
+            border-radius: 5px; /* Add border radius for style */
+        }
+#c9dbdd
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333; /* Dark gray */
+        }
+
+        /* Cards Layout */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: #c2d1d3; /* Soft light gray */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer; /* Indicate that the card is clickable */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background-color: #8fc6cd; /* Soft blue on hover */
+            color: white;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: black; /* Soft dark gray text */
+        }
+
+        /* Footer Section */
+        footer {
+            background: #ffffff; /* White background */
+            color: #333; /* Dark gray text */
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+        }
+
+        footer a {
+            color: #00bcd4; /* Soft blue text */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                transform: translateX(-100%);
+                width: 100%;
+                height: auto;
+                top: 0;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            main {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .content {
+                margin-left: 0; /* Reset margin for mobile */
+            }
+
+            /* Fixing grid display on mobile */
+            .card-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            white-space: pre-wrap; /* Allows wrapping */
+            overflow-wrap: break-word; /* Breaks long words */
+}
+
+/* Style for the Copy button (image-based) */
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Scale and shadow effect on hover */
+.button:hover {
+    transform: scale(1.1); /* Enlarge the button */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for hover effect */
+}
+
+/* Optional: Add smooth transition to the image itself */
+.button img {
+    transition: transform 0.3s ease;
+}
+
+/* Scale the image when hovering on the button */
+.button:hover img {
+    transform: scale(1.1); /* Slightly enlarge the image */
+}
+
+
+
+    </style>
+<style>
+
+
+
+/* Style the tab */
+.tab {
+  float: left;
+  background-color: #f1f1f1;
+  width: 300px;
+  height: 70px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: #ffffff00;
+  color: black;
+  padding: 10px 14px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ffffff00;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background: linear-gradient(60deg, #8fc6cd, white);
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  width: 70%;
+  border-left: none;
+  height: 400px;
+  display: none;
+}
+
+/* Clear floats after the tab */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.current-time {
+    position: absolute;
+    top: 10px;
+    left: 20px; /* Adjust this value based on your layout */
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+
+</style>
+    <style type="text/css">
+        a.nounderline {text-decoration: none; }
+    </style>
+
+</head>
+<body>
+
+
+    <!-- Fixed Header -->
+    <header>
+    <div class="welcome" id="welcomeMessage"></div>
+    <div id="currentTime" class="current-time"></div> <!-- New element for time -->
+
+<a href="2cbdcreplacement.htm" class="nounderline" target="_self"; style="background-color:#00a4ff; color:#333";><h1>Help File Web Version</h1></a>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <a href="greeting.html">Greetings</a>
+            <div class="dropdown">
+                <a href="canned basic.htm" style="background: linear-gradient(180deg, #065c67, black); color: white;">Canned Basic🔻</a>
+                <div class="dropdown-content">
+                    <a href="cbcomplaint.htm">Complaint</a>
+                    <a href="cbordertrack.htm">Order Track</a>
+                    <a href="cbcnic.htm">CNIC Expiry</a>
+                    <a href="cbalfamall.htm">Alfa Mall</a>
+                    <a href="cbcclimit.htm">Credit Card Limit</a>
+                    <a href="cbdcfee.htm">Debit Card Annual Fee</a>
+                    <a href="cbdcreplacement.htm" style="background: linear-gradient(180deg, #065c67, black); color: white;">Debit Card Replacement Fee</a>
+                    <a href="cbccannualfee.htm">Credit Card Annual Fee</a>
+                    <a href="cbccspending.htm">Credit Card Spending</a>
+                    <a href="cbcclimit's.htm">Credit Card Limits</a>
+                </div>
+            </div>
+            <div class="dropdown">
+            <a href="whatsappbot.htm">WhatsApp BOT🔻</a>
+                <div class="dropdown-content">
+                    <a href="wbaccbalance.htm">Account Balance</a>
+                    <a href="wbaccstatement.htm">Account Statement</a>
+                    <a href="wbccbalance.htm">Credit Card Balance</a>
+                    <a href="wbccstatement.htm">Credit Card Statement</a>
+                    <a href="wbdcblocking.htm">Debit Card Blocking</a>
+                    <a href="wbccactivation.htm">Credit Card Activation</a>
+                    <a href="wbdcactivationenglish.htm">Debit Card Activation</a>
+                </div>
+            </div>
+            <a href="internetbanking.htm">New Alfa App</a>
+            <a href="linkscanned.htm">Links Canned</a>
+            <a href="orbitscanned.htm">Orbits Canned</a>
+            <a href="walletcanned.htm">Wallet Canned</a>
+            <a href="cannedmemo.htm">Canned Memo</a>
+            <a href="leadoffering.htm">Lead Offering</a>
+            <div class="dropdown">
+            <a href="othercanned.htm">Other Canned🔻</a>
+                <div class="dropdown-content">
+                    <a href="cre1.htm">Zohaib Canned</a>
+                    <a href="fcre1.htm">Arsalan Canned</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content">
+<div class="tab" style="background-color:#ffffff00";>
+  <button class="tablinks" onmouseover="openCity(event, 'dcfeeeng')">Debit Card Replacement Fee (English)</button>
+  <button class="tablinks" onmouseover="openCity(event, 'dcfeeu')">Debit Card Replacement Fee (Urdu)</button>
+</div>
+
+<div id="dcfeeeng" class="tabcontent">
+<hr><pre id="replace" style="font-size:17px; font-family: bahnschrift;">Dear Customer, VISA Classic debit card replacement charges are PKR 1600/- + FED.
+VISA Gold debit card replacement charges are PKR 2000/- + FED.
+Pehchaan Debit Card replacement charges are PKR 2000/- + FED.
+Paypak debit card replacement charges are PKR 1600/- + FED.
+VISA Platinum debit card replacement charges are PKR 3000/- + FED.
+VISA Signature debit card replacement charges are PKR 3000/- + FED.
+FCY Debit Card replacement charges are USD 5.
+</pre>
+<hr><br><button onclick="copy_to_clipboard('replace')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr><br><br>
+Debit card replacement fee for staff fee: 200/- + FED .
+</div>
+
+<div id="dcfeeu" class="tabcontent">
+<hr><pre id="replaceu" style="font-size:17px; font-family: bahnschrift;">Muaziz Saarif, VISA Classic debit card ke replacement charges hen PKR 1600/- + FED.
+VISA Gold debit card ke replacement charges hen PKR 2000/- + FED.
+Pehchaan Debit Card ke replacement charges hen PKR 2000/- + FED.
+Paypak debit card ke replacement charges hen PKR 1600/- + FED.
+VISA Platinum debit card ke replacement charges hen PKR 3000/- + FED.
+VISA Signature debit card ke replacement charges hen PKR 3000/- + FED.
+FCY Debit Card ke replacement charges hen USD 5.
+</pre>
+ <hr><br><button onclick="copy_to_clipboard('replaceu')" class="button button1" data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr><br><br>
+Staff ke liye debit card replacement charges hen 200/- + FED.
+</div>
+
+
+<div class="clearfix"></div>
+ 
+</main>
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+  
+
+    <script>
+        // Copy to Clipboard Function
+        function copy_to_clipboard(elm_id) {
+            const text = document.getElementById(elm_id).innerText;
+            navigator.clipboard.writeText(text);
+
+        }
+    </script>
+<audio id="sound1" src="\\10.144.66.128\Syed Danish\HELP FILE WEB VERSION\calc.mp3" preload="auto"></audio>
+		
+
+    <script>
+        const buttons = document.querySelectorAll('.button1');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const soundId = button.getAttribute('data-sound');
+                const sound = document.getElementById(soundId);
+                sound.currentTime = 0; // Reset sound to start
+                sound.play(); // Play the sound
+            });
+        });
+    </script>
+<script>
+        // Retrieve the username from localStorage
+        const username = localStorage.getItem('username');
+
+        // If username exists, display the welcome message
+        if (username) {
+            document.getElementById('welcomeMessage').innerText = `Welcome: ${username}`;
+        } else {
+            document.getElementById('welcomeMessage').innerText = 'Welcome: Guest';
+        }
+    </script>
+
+<script>
+// Function to update the time
+function updateTime() {
+    const timeElement = document.getElementById('currentTime');
+    const now = new Date();
+
+    // Format time as HH:MM:SS
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    const timeString = `${hours}:${minutes}:${seconds}`;
+
+    timeElement.innerText = timeString;
+}
+
+// Call updateTime every second
+setInterval(updateTime, 1000);
+
+// Initialize the time immediately on page load
+updateTime();
+</script>
+<script src="js/discoCursor.js"></script>
+
+
+</body>
+</html>
