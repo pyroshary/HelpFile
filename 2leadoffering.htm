@@ -1,9 +1,9 @@
-﻿<html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help File Web Version</title>
-    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
 <link rel="stylesheet" href="Css/discoCursor.css">
 
     <style>
@@ -37,7 +37,7 @@
         }
 
         body.dark-mode th, td {
-            background-color: #3b3b3b;
+            background-color: rgba(59, 59, 59, 0.85);
             color: #ecf0f1;
             border-color: #555;
         }
@@ -47,7 +47,7 @@
         }
 
         body.dark-mode main {
-            background-color: #232325;
+            background-color: rgba(35, 35, 37, 0.80);
         }
 
         body.dark-mode nav a {
@@ -298,8 +298,29 @@ pre {
         #theme-toggle:hover {
             background-color: #1f6f8b;
         }
-
-    
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            body { font-size: 14px; }
+            main { width: 95%; padding: 10px; margin: 10px auto; }
+            nav { flex-direction: column; align-items: center; }
+            nav a { width: 80%; text-align: center; margin: 5px 0; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; font-size: 12px; }
+            .button { padding: 2px 8px; }
+            .button img { width: 24px !important; height: 20px !important; }
+            pre { font-size: 12px; padding: 8px; overflow-x: auto; }
+            header h1 { font-size: 18px; padding: 10px; }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body { font-size: 12px; }
+            main { width: 98%; padding: 5px; }
+            nav a { width: 90%; font-size: 14px; }
+            th, td { padding: 6px; font-size: 11px; }
+            .button img { width: 20px !important; height: 18px !important; }
+            pre { font-size: 11px; padding: 5px; }
+            header h1 { font-size: 16px; }
+        }
     </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -376,7 +397,7 @@ pre {
 <a href="2cannedmemo.htm" target="_self"">Canned Memo</a>
 <a href="2leadoffering.htm" target="_self" style="background-color:#00a4ff; color:white";>Lead Offering</a>
 <a href="2socialmediaresponses.htm" target="_self">Social Media Responses</a>
-<a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="idea.gif"></a>
+<a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="bulb.gif"></a>
 </nav>
     <button id="theme-toggle" style="position: absolute; top: 20px; right: 20px; padding: 10px;">Switch Theme</button>
 
@@ -410,8 +431,8 @@ And you can also apply through nearest branch , WhatsApp ,Rapid, Website, Alfa o
 
 <b>LINKS<b/> :  https://rapid.bankalfalah.com/AlfalahRapidPROD/Loan_Selection.aspx
 
-</pre><button onclick="copy_to_clipboard('loan1')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
- <pre id="loan11" style="font-size:15px; font-family: bahnschrift;">Dear Customer, thank you for providing details our sales representative will contact you within 24 to 48 working hours.</pre><button onclick="copy_to_clipboard('loan11')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</pre><button onclick="copy_to_clipboard('loan1')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
+ <pre id="loan11" style="font-size:15px; font-family: bahnschrift;">Dear Customer, thank you for providing details our sales representative will contact you within 24 to 48 working hours.</pre><button onclick="copy_to_clipboard('loan11')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 
@@ -432,9 +453,9 @@ Phir apko hamari team ki janib se 24 to 48 hours men contact karliya jaega.
 Iske ilawa ap nearest branch , Rapid, WhatsApp , Website aur hamari helpline 021/042 111 225 111 ke zariye bhi apply kar sakte hen.
 <b>LINKS<b/> : https://rapid.bankalfalah.com/AlfalahRapidPROD/Loan_Selection.aspx
 </pre><button 
-onclick="copy_to_clipboard('loan2')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+onclick="copy_to_clipboard('loan2')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 <pre id="loan22" style="font-size:15px; font-family: bahnschrift;">Muaziz Saarif, thank you ab apko hamare department ki janib se 24 to 48 working hours men contact karke guide kiya jaega.
-</pre> <button onclick="copy_to_clipboard('loan22')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+</pre> <button onclick="copy_to_clipboard('loan22')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="3" class="tabcontent" style="color:midnightblue";>
@@ -452,8 +473,8 @@ Then our concern team will contact you within 24 to 48 hours.
 
 Or you can also apply for bank alfalah credit card through conventional branch, internet banking, Alfa App, helpline 021/042 111 225 111, Rapid, and through the given links in this regard.
 https://www.bankalfalah.com/personal-banking/credit-cards/ and 
-https://rapid.bankalfalah.com/AlfalahRapidPROD/Credit_Card.aspx?cardId=1</pre><button onclick="copy_to_clipboard('loan3')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
-<pre id="loan33" style="font-size:15px; font-family: bahnschrift;">Dear Customer, thank you for providing details our sales representative will contact you within 24 to 48 working hours.</pre><button onclick="copy_to_clipboard('loan33')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+https://rapid.bankalfalah.com/AlfalahRapidPROD/Credit_Card.aspx?cardId=1</pre><button onclick="copy_to_clipboard('loan3')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
+<pre id="loan33" style="font-size:15px; font-family: bahnschrift;">Dear Customer, thank you for providing details our sales representative will contact you within 24 to 48 working hours.</pre><button onclick="copy_to_clipboard('loan33')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="4" class="tabcontent" style="color:midnightblue";>
@@ -471,8 +492,8 @@ Phir apko hamari team ki janib se 24 to 48 hours men contact karliya jaega.
 
 Iske ilawa ap credit card ke liye apply kar sakte hen conventional branch ke zariye internet banking ke zariye hamari helpline 021/042 111 225 111 ke zariye, Alfa App Rapid ka zariye ya phir diye gae link ke zariye bhi apply kar sakte hen.
 https://www.bankalfalah.com/personal-banking/credit-cards/
-https://rapid.bankalfalah.com/AlfalahRapidPROD/Credit_Card.aspx?cardId=1.</pre><button onclick="copy_to_clipboard('loan4')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
-<pre id="loan44" style="font-size:15px; font-family: bahnschrift;">Muaziz Saarif, thank you ab apko hamare department ki janib se 24 to 48 working hours men contact karke guide kiya jaega.</pre><button onclick="copy_to_clipboard('loan44')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+https://rapid.bankalfalah.com/AlfalahRapidPROD/Credit_Card.aspx?cardId=1.</pre><button onclick="copy_to_clipboard('loan4')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
+<pre id="loan44" style="font-size:15px; font-family: bahnschrift;">Muaziz Saarif, thank you ab apko hamare department ki janib se 24 to 48 working hours men contact karke guide kiya jaega.</pre><button onclick="copy_to_clipboard('loan44')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="5" class="tabcontent" style="color:midnightblue";>
@@ -488,8 +509,8 @@ City to avail in Pakistan
 RDA Account Number
 CNIC#(if available)
 
-Then our concern team will contact you within 24 to 48 hours.</pre><button onclick="copy_to_clipboard('loan5')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
-<pre id="loan55" style="font-size:15px; font-family: bahnschrift;">Dear Customer, thank you for providing details our sales representative will contact you within 24 to 48 working hours.</pre><button onclick="copy_to_clipboard('loan55')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+Then our concern team will contact you within 24 to 48 hours.</pre><button onclick="copy_to_clipboard('loan5')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
+<pre id="loan55" style="font-size:15px; font-family: bahnschrift;">Dear Customer, thank you for providing details our sales representative will contact you within 24 to 48 working hours.</pre><button onclick="copy_to_clipboard('loan55')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="6" class="tabcontent" style="color:midnightblue";>
@@ -505,8 +526,8 @@ City to avail in Pakistan
 RDA Account Number
 CNIC#(if available)
 
-Phir apko hamari team ki janib se 24 to 48 hours men contact karliya jaega.</pre><button onclick="copy_to_clipboard('loan6')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
-<pre id="loan66" style="font-size:15px; font-family: bahnschrift;">Muaziz Saarif,</b> thank you ab apko hamare department ki janib se 24 to 48 working hours men contact karke guide kiya jaega.</pre><button onclick="copy_to_clipboard('loan66')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+Phir apko hamari team ki janib se 24 to 48 hours men contact karliya jaega.</pre><button onclick="copy_to_clipboard('loan6')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
+<pre id="loan66" style="font-size:15px; font-family: bahnschrift;">Muaziz Saarif,</b> thank you ab apko hamare department ki janib se 24 to 48 working hours men contact karke guide kiya jaega.</pre><button onclick="copy_to_clipboard('loan66')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 

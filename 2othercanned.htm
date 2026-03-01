@@ -1,9 +1,9 @@
-﻿<html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help File Web Version</title>
-    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
 <link rel="stylesheet" href="Css/discoCursor.css">
 
     <style>
@@ -38,7 +38,7 @@
         }
 
         body.dark-mode th, td {
-            background-color: #3b3b3b;
+            background-color: rgba(59, 59, 59, 0.85);
             color: #ecf0f1;
             border-color: #555;
         }
@@ -48,7 +48,7 @@
         }
 
         body.dark-mode main {
-            background-color: #232325;
+            background-color: rgba(35, 35, 37, 0.80);
         }
 
         body.dark-mode nav a {
@@ -292,7 +292,29 @@ pre {
         #theme-toggle:hover {
             background-color: #1f6f8b;
         }
-
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            body { font-size: 14px; }
+            main { width: 95%; padding: 10px; margin: 10px auto; }
+            nav { flex-direction: column; align-items: center; }
+            nav a { width: 80%; text-align: center; margin: 5px 0; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; font-size: 12px; }
+            .button { padding: 2px 8px; }
+            .button img { width: 24px !important; height: 20px !important; }
+            pre { font-size: 12px; padding: 8px; overflow-x: auto; }
+            header h1 { font-size: 18px; padding: 10px; }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body { font-size: 12px; }
+            main { width: 98%; padding: 5px; }
+            nav a { width: 90%; font-size: 14px; }
+            th, td { padding: 6px; font-size: 11px; }
+            .button img { width: 20px !important; height: 18px !important; }
+            pre { font-size: 11px; padding: 5px; }
+            header h1 { font-size: 16px; }
+        }
     </style>
 
 
@@ -387,7 +409,7 @@ pre {
             <a href="2Walletcanned.htm" target="_self";>Wallet Canned</a>
             <a href="2cannedmemo.htm" target="_self";>Canned Memo</a>
             <a href="2leadoffering.htm" target="_self";>Lead Offering</a>
-	    <a href="2othercanned.htm" target="_self" style="background-color:#00a4ff; color:white";><img style="width:30px; height:25px;" src="idea.gif"></a>
+	    <a href="2othercanned.htm" target="_self" style="background-color:#00a4ff; color:white";><img style="width:30px; height:25px;" src="bulb.gif"></a>
 </nav>
 <nav>
 <a href="2cre1.htm" target="_self" style="width:70px; height:15px; font-size:10px";>Zohaib</a>
@@ -407,18 +429,18 @@ pre {
             <button class="btn" onclick="appendToDisplay('7')" data-sound="sound1">7</button>
             <button class="btn" onclick="appendToDisplay('8')" data-sound="sound1">8</button>
             <button class="btn" onclick="appendToDisplay('9')" data-sound="sound1">9</button>
-            <button class="btn operator" onclick="appendToDisplay('/')" data-sound="sound1">âž—</button>
+            <button class="btn operator" onclick="appendToDisplay('/')" data-sound="sound1">➗</button>
             <button class="btn" onclick="appendToDisplay('4')" data-sound="sound1">4</button>
             <button class="btn" onclick="appendToDisplay('5')" data-sound="sound1">5</button>
             <button class="btn" onclick="appendToDisplay('6')" data-sound="sound1">6</button>
-            <button class="btn operator" onclick="appendToDisplay('*')" data-sound="sound1">âŒ</button>
+            <button class="btn operator" onclick="appendToDisplay('*')" data-sound="sound1">❌</button>
             <button class="btn" onclick="appendToDisplay('1')" data-sound="sound1">1</button>
             <button class="btn" onclick="appendToDisplay('2')" data-sound="sound1">2</button>
             <button class="btn" onclick="appendToDisplay('3')" data-sound="sound1">3</button>
-            <button class="btn operator" onclick="appendToDisplay('-')" data-sound="sound1">âž–</button>
+            <button class="btn operator" onclick="appendToDisplay('-')" data-sound="sound1">➖</button>
             <button class="btn" onclick="appendToDisplay('0')" data-sound="sound1">0</button>
             <button class="btn equal" onclick="calculateResult()" data-sound="sound1">=</button>
-            <button class="btn operator" onclick="appendToDisplay('+')" data-sound="sound1">âž•</button>
+            <button class="btn operator" onclick="appendToDisplay('+')" data-sound="sound1">➕</button>
         </div>
     </div>
 </main>

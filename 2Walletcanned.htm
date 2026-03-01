@@ -1,9 +1,9 @@
-﻿<html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help File Web Version</title>
-    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
 <link rel="stylesheet" href="Css/discoCursor.css">
 
     <style>
@@ -38,7 +38,7 @@
         }
 
         body.dark-mode th, td {
-            background-color: #3b3b3b;
+            background-color: rgba(59, 59, 59, 0.85);
             color: #ecf0f1;
             border-color: #555;
         }
@@ -48,7 +48,7 @@
         }
 
         body.dark-mode main {
-            background-color: #232325;
+            background-color: rgba(35, 35, 37, 0.80);
         }
 
         body.dark-mode nav a {
@@ -263,7 +263,29 @@
         #theme-toggle:hover {
             background-color: #1f6f8b;
         }
-
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            body { font-size: 14px; }
+            main { width: 95%; padding: 10px; margin: 10px auto; }
+            nav { flex-direction: column; align-items: center; }
+            nav a { width: 80%; text-align: center; margin: 5px 0; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; font-size: 12px; }
+            .button { padding: 2px 8px; }
+            .button img { width: 24px !important; height: 20px !important; }
+            pre { font-size: 12px; padding: 8px; overflow-x: auto; }
+            header h1 { font-size: 18px; padding: 10px; }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body { font-size: 12px; }
+            main { width: 98%; padding: 5px; }
+            nav a { width: 90%; font-size: 14px; }
+            th, td { padding: 6px; font-size: 11px; }
+            .button img { width: 20px !important; height: 18px !important; }
+            pre { font-size: 11px; padding: 5px; }
+            header h1 { font-size: 16px; }
+        }
     </style>
     <style type="text/css">
         a.nounderline {text-decoration: none; }
@@ -284,7 +306,7 @@
 <a href="2cannedmemo.htm" target="_self"">Canned Memo</a>
 <a href="2leadoffering.htm" target="_self";>Lead Offering</a>
 <a href="2socialmediaresponses.htm" target="_self">Social Media Responses</a>
-<a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="idea.gif"></a>
+<a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="bulb.gif"></a>
 </nav>
     <button id="theme-toggle" style="position: absolute; top: 20px; right: 20px; padding: 10px;">Switch Theme</button>
 
@@ -301,7 +323,7 @@
 <p><b>Open wallet:
 You can open a wallet account through Alfa application. By going to Sign In> Register Now> Wallet. You will have to enter the promo code while registering to get the reward.</b></p>
 
-<p><b>Limits of Alfa Savings Wallet accountmentioned below:â€‹</b><br>
+<p><b>Limits of Alfa Savings Wallet accountmentioned below:​</b><br>
 
 <b>Alfa Saving Level 0 :</b><br>
 Daily Limit Credit 25,000<br>

@@ -1,9 +1,9 @@
-﻿<html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help File Web Version</title>
-    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
 <link rel="stylesheet" href="Css/discoCursor.css">
 
     <style>
@@ -38,7 +38,7 @@
         }
 
         body.dark-mode th, td {
-            background-color: #3b3b3b;
+            background-color: rgba(59, 59, 59, 0.85);
             color: #ecf0f1;
             border-color: #555;
         }
@@ -48,7 +48,7 @@
         }
 
         body.dark-mode main {
-            background-color: #232325;
+            background-color: rgba(35, 35, 37, 0.80);
         }
 
         body.dark-mode nav a {
@@ -296,9 +296,29 @@ pre {
         #theme-toggle:hover {
             background-color: #1f6f8b;
         }
-
-
-
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            body { font-size: 14px; }
+            main { width: 95%; padding: 10px; margin: 10px auto; }
+            nav { flex-direction: column; align-items: center; }
+            nav a { width: 80%; text-align: center; margin: 5px 0; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; font-size: 12px; }
+            .button { padding: 2px 8px; }
+            .button img { width: 24px !important; height: 20px !important; }
+            pre { font-size: 12px; padding: 8px; overflow-x: auto; }
+            header h1 { font-size: 18px; padding: 10px; }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body { font-size: 12px; }
+            main { width: 98%; padding: 5px; }
+            nav a { width: 90%; font-size: 14px; }
+            th, td { padding: 6px; font-size: 11px; }
+            .button img { width: 20px !important; height: 18px !important; }
+            pre { font-size: 11px; padding: 5px; }
+            header h1 { font-size: 16px; }
+        }
     </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -373,7 +393,7 @@ pre {
             <a href="2Walletcanned.htm" target="_self";>Wallet Canned</a>
             <a href="2cannedmemo.htm" target="_self";>Canned Memo</a>
             <a href="2leadoffering.htm" target="_self";>Lead Offering</a>
-	    <a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="idea.gif"></a>
+	    <a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="bulb.gif"></a>
 </nav>
 <nav>
 <a href="2cbcomplaint.htm" target="_self" style="width:70px; height:15px; font-size:10px";>Complaint</a>
@@ -401,16 +421,16 @@ pre {
 <pre id="cnic" style="font-size:15px; font-family: bahnschrift;">Dear Customer, you can update your CNIC expiry through multiple channels i.e. Alfa, Selected ATM's, CDM, Rapid portal, WhatsApp BOT or Branch.
 
 ATM Journey to Update CNIC Expiry:
-Dear Customer, you will press any key from ATM and select the Value Added Services.â–¶ Update CNIC expiry date.â–¶ Enter 13 digit CNIC#.â–¶ Place right thumb over biometric device.â–¶ Enter new expiry date.â–¶ Acknowledgment screen will appear.
+Dear Customer, you will press any key from ATM and select the Value Added Services.▶ Update CNIC expiry date.▶ Enter 13 digit CNIC#.▶ Place right thumb over biometric device.▶ Enter new expiry date.▶ Acknowledgment screen will appear.
 
 Alfa Journey to Update CNIC Expiry:
-Login Alfa â–¶ click on More â–¶ click on CNIC Expiry â–¶ CNIC expiry update â–¶ CNIC issuance date.
+Login Alfa ▶ click on More ▶ click on CNIC Expiry ▶ CNIC expiry update ▶ CNIC issuance date.
 
 Update your CNIC Expiry Date through Bank Alfalah Internet Banking:
-Login to IB â–¶ Value Added Services â–¶ CNIC Expiry Update.
+Login to IB ▶ Value Added Services ▶ CNIC Expiry Update.
 
 WhatsApp Journey to Update CNIC Expiry:
-1. Account & Credit Card Services â–¶ 7. Update CNIC Expiry â–¶ OTP â–¶ Last 4 Digits of CNIC â–¶ CNIC Issuance Date.
+1. Account & Credit Card Services ▶ 7. Update CNIC Expiry ▶ OTP ▶ Last 4 Digits of CNIC ▶ CNIC Issuance Date.
 
 SMS Banking:
 Following is the correct format for understanding: CU (space) (13 digits CNIC without dash/space) (space) (Issuance Date in DD/MM/YYYY) i.e. 
@@ -426,23 +446,23 @@ For credit card profile you have to submit CNIC copy at our consumer finance cen
 Please follow this link for video assistance.
 https://youtube.com/shorts/OdtntJvpoFs?feature=share .
 </pre>
-<button onclick="copy_to_clipboard('cnic')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button>
+<button onclick="copy_to_clipboard('cnic')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button>
 </div>
 
 <div id="Paris" class="tabcontent">
 <pre id="cnicu" style="font-size:15px; font-family: bahnschrift;">Muaziz Saarif, ap apne CNIC ki expiry date update kar sakte hen Alfa app ke zariye, Internet banking ke zariye, ATM machine ke zariye, WhatsApp BOT ke zariye aur SMS ke zariye bhi update kar sakte hen aur diye gae link ke zariye video assistance bhi hasil kar sakte hen.
 
 ATM Journey to Update CNIC Expiry:
-Muaziz Saarif, ap ATM machine men koi bhi button press karen aur Value Added Services ka option select karen.â–¶ Update CNIC expiry date.â–¶ Enter 13 digit CNIC#.â–¶ Place right thumb over biometric device.â–¶ Enter new expiry date.â–¶ Acknowledgment screen will appear.
+Muaziz Saarif, ap ATM machine men koi bhi button press karen aur Value Added Services ka option select karen.▶ Update CNIC expiry date.▶ Enter 13 digit CNIC#.▶ Place right thumb over biometric device.▶ Enter new expiry date.▶ Acknowledgment screen will appear.
 
 Alfa Journey to Update CNIC Expiry:
-Login Alfa â–¶ click on More â–¶ click on CNIC Expiry â–¶ CNIC expiry update â–¶ CNIC issuance date.
+Login Alfa ▶ click on More ▶ click on CNIC Expiry ▶ CNIC expiry update ▶ CNIC issuance date.
 
 Update your CNIC Expiry Date through Bank Alfalah Internet Banking:
-Login to IB â–¶ Value Added Services â–¶ CNIC Expiry Update.
+Login to IB ▶ Value Added Services ▶ CNIC Expiry Update.
 
 WhatsApp Journey to Update CNIC Expiry:
-1. Account & Credit Card Services â–¶ 7. Update CNIC Expiry â–¶ OTP â–¶ Last 4 Digits of CNIC â–¶ CNIC Issuance Date.
+1. Account & Credit Card Services ▶ 7. Update CNIC Expiry ▶ OTP ▶ Last 4 Digits of CNIC ▶ CNIC Issuance Date.
 
 SMS Banking:
 SMS ke zariye CNIC expiry update karne ke liye ap is format ko follow karen. CU (space) (13 digits CNIC without dash/space) (space) (Issuance Date in DD/MM/YYYY).
@@ -457,7 +477,7 @@ For credit card profile you have to submit CNIC copy at our consumer finance cen
 
 Video assistance ke liye ap diye gae link pe visit kar sakte hen.
 https://youtube.com/shorts/OdtntJvpoFs?feature=share .</pre> 
-<button onclick="copy_to_clipboard('cnicu')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button>
+<button onclick="copy_to_clipboard('cnicu')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button>
 </div>
 
 

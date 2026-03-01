@@ -1,9 +1,9 @@
-﻿<html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help File Web Version</title>
-    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
 <link rel="stylesheet" href="Css/discoCursor.css">
 
     <style>
@@ -38,7 +38,7 @@
         }
 
         body.dark-mode th, td {
-            background-color: #3b3b3b;
+            background-color: rgba(59, 59, 59, 0.85);
             color: #ecf0f1;
             border-color: #555;
         }
@@ -48,7 +48,7 @@
         }
 
         body.dark-mode main {
-            background-color: #232325;
+            background-color: rgba(35, 35, 37, 0.80);
         }
 
         body.dark-mode nav a {
@@ -300,9 +300,29 @@ pre {
         #theme-toggle:hover {
             background-color: #1f6f8b;
         }
-
-
-
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            body { font-size: 14px; }
+            main { width: 95%; padding: 10px; margin: 10px auto; }
+            nav { flex-direction: column; align-items: center; }
+            nav a { width: 80%; text-align: center; margin: 5px 0; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; font-size: 12px; }
+            .button { padding: 2px 8px; }
+            .button img { width: 24px !important; height: 20px !important; }
+            pre { font-size: 12px; padding: 8px; overflow-x: auto; }
+            header h1 { font-size: 18px; padding: 10px; }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body { font-size: 12px; }
+            main { width: 98%; padding: 5px; }
+            nav a { width: 90%; font-size: 14px; }
+            th, td { padding: 6px; font-size: 11px; }
+            .button img { width: 20px !important; height: 18px !important; }
+            pre { font-size: 11px; padding: 5px; }
+            header h1 { font-size: 16px; }
+        }
     </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -379,14 +399,14 @@ pre {
 <a href="2cannedmemo.htm" target="_self"">Canned Memo</a>
 <a href="2leadoffering.htm" target="_self";>Lead Offering</a>
 <a href="2socialmediaresponses.htm" target="_self">Social Media Responses</a>
-<a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="idea.gif"></a>
+<a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="bulb.gif"></a>
 </nav>
     <button id="theme-toggle" style="position: absolute; top: 20px; right: 20px; padding: 10px;">Switch Theme</button>
 
 <div class="time" id="demo">TIME</div>
    </header> 
 <main>
-<p id="worth">The worth of 1 orbit is equivalent to Rs. 1 at the time of redemption.</p><button onclick="copy_to_clipboard('worth')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<p id="worth">The worth of 1 orbit is equivalent to Rs. 1 at the time of redemption.</p><button onclick="copy_to_clipboard('worth')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 <div class="tab" style="background-color:#ffffff00";>
   <button class="tablinks" onmouseover="openCity(event, 'London')">Orbits (English)</button>
   <button class="tablinks" onmouseover="openCity(event, 'Paris')">Orbits (Urdu)</button>
@@ -401,7 +421,7 @@ Dear Customer, through orbits you may pay your utility bills, make donations, ut
 Orbits Redemption through POS:
 All Bank Alfalah POS terminals have been updated with Orbit redemption feature. You can now visit any merchant where Bank Alfalah POS machine is available for instant Orbit points redemption for up to PKR 9,999 per transaction limit.
 
-Dear Customer, you may earn Orbit on every retail transaction from your account, debit card, credit card, from loans, ADC channels, etc.</pre><button onclick="copy_to_clipboard('orbite')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button>
+Dear Customer, you may earn Orbit on every retail transaction from your account, debit card, credit card, from loans, ADC channels, etc.</pre><button onclick="copy_to_clipboard('orbite')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button>
 </div>
 
 <div id="Paris" class="tabcontent" style="color:white";>
@@ -413,7 +433,7 @@ Muaziz Saarif, Orbits ke zariye aap apni utility bills pay kar sakte hain, donat
 Orbits Redemption through POS:
 Tamam Bank Alfalah POS terminals ko Orbit redemption feature ke saath update kar diya gaya hai. Ab aap kisi bhi aese merchant ke paas ja sakte hain jahan Bank Alfalah ki POS machine maujood hai aur ek transaction mein PKR 9,999 tak ke Orbit points instantly redeem kar sakte hain.
 
-Muaziz Saarif, aap apne account, debit card, credit card, loans, ADC channels, ke zariye har ek retail transaction par Orbit earn kar sakte hain.</pre><button onclick="copy_to_clipboard('orbitu')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button>
+Muaziz Saarif, aap apne account, debit card, credit card, loans, ADC channels, ke zariye har ek retail transaction par Orbit earn kar sakte hain.</pre><button onclick="copy_to_clipboard('orbitu')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button>
 </div>
 
 

@@ -1,9 +1,9 @@
-﻿<html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help File Web Version</title>
-    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
 <link rel="stylesheet" href="Css/discoCursor.css">
 
     <style>
@@ -38,7 +38,7 @@
         }
 
         body.dark-mode th, td {
-            background-color: #3b3b3b;
+            background-color: rgba(59, 59, 59, 0.85);
             color: #ecf0f1;
             border-color: #555;
         }
@@ -48,7 +48,7 @@
         }
 
         body.dark-mode main {
-            background-color: #232325;
+            background-color: rgba(35, 35, 37, 0.80);
         }
 
         body.dark-mode nav a {
@@ -299,8 +299,29 @@ pre {
         #theme-toggle:hover {
             background-color: #1f6f8b;
         }
-
-
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            body { font-size: 14px; }
+            main { width: 95%; padding: 10px; margin: 10px auto; }
+            nav { flex-direction: column; align-items: center; }
+            nav a { width: 80%; text-align: center; margin: 5px 0; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; font-size: 12px; }
+            .button { padding: 2px 8px; }
+            .button img { width: 24px !important; height: 20px !important; }
+            pre { font-size: 12px; padding: 8px; overflow-x: auto; }
+            header h1 { font-size: 18px; padding: 10px; }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body { font-size: 12px; }
+            main { width: 98%; padding: 5px; }
+            nav a { width: 90%; font-size: 14px; }
+            th, td { padding: 6px; font-size: 11px; }
+            .button img { width: 20px !important; height: 18px !important; }
+            pre { font-size: 11px; padding: 5px; }
+            header h1 { font-size: 16px; }
+        }
     </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -377,7 +398,7 @@ pre {
 <a href="2cannedmemo.htm" target="_self">Canned Memo</a>
 <a href="2leadoffering.htm" target="_self";>Lead Offering</a>
 <a href="2socialmediaresponses.htm" target="_self">Social Media Responses</a>
-<a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="idea.gif"></a>
+<a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="bulb.gif"></a>
 </nav>
     <button id="theme-toggle" style="position: absolute; top: 20px; right: 20px; padding: 10px;">Switch Theme</button>
 
@@ -402,29 +423,29 @@ pre {
 <div id="ib" class="tabcontent" style="color:midnightblue";>
 <hr><pre id="ire" style="font-size:14px; font-family: bahnschrift;">Dear Customer, to subscribe to Bank Alfalah's internet banking services, follow these steps:
 
-â€¢ Visit the internet banking registration page at https://netbanking.bankalfalah.com/ib/TermsConditions.aspx .
-â€¢ Review the terms and conditions and select your desired option from Credit Card Customers, Debit Card Customers, or Account Holder Customers.
-â€¢ Complete the required information, including account number or card number, CNIC/SCNIC/NICOP, date of birth, registered mobile number, and security question.
-â€¢ Submit the form and confirm the registered email ID.
-â€¢ Visit the ATM/CDM machine to or Bank Alfalah branch for biometric verification.
-â€¢ Upon successful verification, an OTAC will be generated and sent to your registered email and mobile number.
-â€¢ Use the OTAC to log in to internet banking.
+- Visit the internet banking registration page at https://netbanking.bankalfalah.com/ib/TermsConditions.aspx .
+- Review the terms and conditions and select your desired option from Credit Card Customers, Debit Card Customers, or Account Holder Customers.
+- Complete the required information, including account number or card number, CNIC/SCNIC/NICOP, date of birth, registered mobile number, and security question.
+- Submit the form and confirm the registered email ID.
+- Visit the ATM/CDM machine to or Bank Alfalah branch for biometric verification.
+- Upon successful verification, an OTAC will be generated and sent to your registered email and mobile number.
+- Use the OTAC to log in to internet banking.
 </pre> 
-<hr><button onclick="copy_to_clipboard('ire')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png.webp"></button><hr>
+<hr><button onclick="copy_to_clipboard('ire')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="ibu" class="tabcontent" style="color:midnightblue";>
 <hr><pre id="iru" style="font-size:14px; font-family: bahnschrift;">Muaziz Sarif, Bank Alfalah ki internet banking services subscribe karne ke liye ye steps follow karein:
 
-â€¢ Internet banking registration page par jaiye https://netbanking.bankalfalah.com/ib/TermsConditions.aspx
-â€¢ Terms and conditions ko parh kar aur Credit Card Customers, Debit Card Customers, ya Account Holder Customers se apni pasand ki option select karein.
-â€¢ Zaruri information jaisay account number ya card number, CNIC/SCNIC/NICOP, janam din, registered mobile number aur security question ko complete karein.
-â€¢ Form submit karein aur registered email ID ko confirm karein.
-â€¢ Bank Alfalah ke branch par biometric verification ke liye jaiye ya phir ATM/CDM machine sy bhi kar skty hain.
-â€¢ Agar verification successful ho gayi to OTAC generate hoga jo apki registered email aur mobile number par bheja jayega.
-â€¢ OTAC ko use kar ke internet banking mein log in karein.
+- Internet banking registration page par jaiye https://netbanking.bankalfalah.com/ib/TermsConditions.aspx
+- Terms and conditions ko parh kar aur Credit Card Customers, Debit Card Customers, ya Account Holder Customers se apni pasand ki option select karein.
+- Zaruri information jaisay account number ya card number, CNIC/SCNIC/NICOP, janam din, registered mobile number aur security question ko complete karein.
+- Form submit karein aur registered email ID ko confirm karein.
+- Bank Alfalah ke branch par biometric verification ke liye jaiye ya phir ATM/CDM machine sy bhi kar skty hain.
+- Agar verification successful ho gayi to OTAC generate hoga jo apki registered email aur mobile number par bheja jayega.
+- OTAC ko use kar ke internet banking mein log in karein.
 </pre> 
-<hr><button onclick="copy_to_clipboard('iru')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src=""></button><hr>
+<hr><button onclick="copy_to_clipboard('iru')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="alfaapp" class="tabcontent" style="color:midnightblue";>
@@ -454,7 +475,7 @@ For iPhone Users https://itunes.apple.com/pk/app/alfa/id1050684372?mt=8
 Please note: In-app biometric verification will let you use the app and conduct transactions but only with a limit of PKR 250,000 per day.
 Branch biometric verification will allow the user to have the full Alfa experience on per day limit (selected package limit).
 </pre> 
-<hr><button onclick="copy_to_clipboard('re')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<hr><button onclick="copy_to_clipboard('re')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="alfaappu" class="tabcontent" style="color:midnightblue";>
@@ -482,7 +503,7 @@ For iPhone Users https://itunes.apple.com/pk/app/alfa/id1050684372?mt=8
   
 Please note: In-app biometric verification k bd ap 250,000/-PKR rozana ki bunyad pr transaction kr skte hain, agr apne selected package k mutabik full limit chahte hain to phir apko nearest branch men visit kr ke biometric verification karwani hogi.
 </pre> 
-<hr><button onclick="copy_to_clipboard('ru')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<hr><button onclick="copy_to_clipboard('ru')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 
@@ -499,7 +520,7 @@ Please note: In-app biometric verification k bd ap 250,000/-PKR rozana ki bunyad
 
 You will receive Username through SMS and Email. 
 </pre>
-<hr><button onclick="copy_to_clipboard('recoverusername')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr> 
+<hr><button onclick="copy_to_clipboard('recoverusername')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr> 
 </div>
 
 <div id="resetu" class="tabcontent" style="color:midnightblue";>
@@ -515,7 +536,7 @@ You will receive Username through SMS and Email.
 
 Phir apke pas SMS aur Email ke zariye Username receive hojaega.
 </pre> 
-<hr><button onclick="copy_to_clipboard('recoverusernameu')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr> 
+<hr><button onclick="copy_to_clipboard('recoverusernameu')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr> 
 </div>
 
 <div id="passe" class="tabcontent" style="color:midnightblue";>
@@ -531,7 +552,7 @@ Phir apke pas SMS aur Email ke zariye Username receive hojaega.
 
 You will receive temporary Password through SMS and Email.
 </pre> 
-<hr><button onclick="copy_to_clipboard('passworde')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr> 
+<hr><button onclick="copy_to_clipboard('passworde')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr> 
 </div>
 
 <div id="passu" class="tabcontent" style="color:midnightblue";>
@@ -547,7 +568,7 @@ You will receive temporary Password through SMS and Email.
 
 Phir apke pas SMS aur Email ke zariye temporary Password receive hojaega.
 </pre> 
-<hr><button onclick="copy_to_clipboard('passwordu')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr> 
+<hr><button onclick="copy_to_clipboard('passwordu')" class="button button1"  data-sound="sound1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr> 
 </div>
 
 <div id="devicee" class="tabcontent" style="color:midnightblue";>
@@ -694,8 +715,8 @@ Dear Customer, in order to check available discounts and promotions on your card
 Dear Customer, you can activate your Debit Card through Alfa application, please follow the steps below:
 1-Login Alfa Application.
 2-Tap on "Overview".
-3-Tap on â€˜Go to card managementâ€™.
-4-Tap on â€˜Activate card nowâ€™.
+3-Tap on ‘Go to card management’.
+4-Tap on ‘Activate card now’.
 5-Enter card expiry (MM/YY).
 6-On next screen enter your card PIN.
 7-Again enter your card PIN for confirmation.
@@ -706,8 +727,8 @@ Next screen will come with message "Card activated & PIN set successfully!".
 Muaziz Saarif, ap apna debit card diye gae steps ke zariye Alfa app se activate kar sakte hen.
 1-Login Alfa Application.
 2-Tap karen "Overview" pe.
-3-Tap karen â€˜Go to card managementâ€™ pe.
-4-Tap karen â€˜Activate card nowâ€™ pe.
+3-Tap karen ‘Go to card management’ pe.
+4-Tap karen ‘Activate card now’ pe.
 5-Enter card expiry (MM/YY).
 6-Next screen pe apne card ka PIN enter karen.
 7-Again enter PIN enter karen confirmation ke liye.

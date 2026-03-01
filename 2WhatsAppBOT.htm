@@ -1,9 +1,9 @@
-﻿<html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help File Web Version</title>
-    <link rel="icon" type="image/x-icon" href="favicon4.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
 <link rel="stylesheet" href="Css/discoCursor.css">
 
     <style>
@@ -37,7 +37,7 @@
         }
 
         body.dark-mode th, td {
-            background-color: #3b3b3b;
+            background-color: rgba(59, 59, 59, 0.85);
             color: #ecf0f1;
             border-color: #555;
         }
@@ -47,7 +47,7 @@
         }
 
         body.dark-mode main {
-            background-color: #232325;
+            background-color: rgba(35, 35, 37, 0.80);
         }
 
         body.dark-mode nav a {
@@ -296,8 +296,29 @@ pre {
         #theme-toggle:hover {
             background-color: #1f6f8b;
         }
-
-
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            body { font-size: 14px; }
+            main { width: 95%; padding: 10px; margin: 10px auto; }
+            nav { flex-direction: column; align-items: center; }
+            nav a { width: 80%; text-align: center; margin: 5px 0; }
+            table { font-size: 13px; }
+            th, td { padding: 8px; font-size: 12px; }
+            .button { padding: 2px 8px; }
+            .button img { width: 24px !important; height: 20px !important; }
+            pre { font-size: 12px; padding: 8px; overflow-x: auto; }
+            header h1 { font-size: 18px; padding: 10px; }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body { font-size: 12px; }
+            main { width: 98%; padding: 5px; }
+            nav a { width: 90%; font-size: 14px; }
+            th, td { padding: 6px; font-size: 11px; }
+            .button img { width: 20px !important; height: 18px !important; }
+            pre { font-size: 11px; padding: 5px; }
+            header h1 { font-size: 16px; }
+        }
     </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -374,7 +395,7 @@ pre {
             <a href="2cannedmemo.htm" target="_self";>Canned Memo</a>
             <a href="2leadoffering.htm" target="_self";>Lead Offering</a>
             <a href="2socialmediaresponses.htm" target="_self">Social Media Responses</a>
-	    <a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="idea.gif"></a>
+	    <a href="2othercanned.htm" target="_self";><img style="width:30px; height:25px;" src="bulb.gif"></a>
 </nav>
 <nav>
 <a href="2WhatsAppBOT.htm" target="_self" style="width:70px; height:15px; font-size:10px; background-color:#00a4ff; color:white";><b>TRANSACT</b></a>
@@ -392,20 +413,20 @@ pre {
    </header>
 
 <main>
-<pre id="wa" style="font-size:12px; font-family: bahnschrift;">Dear Customer, you can now perform financial transaction which includes (Bank to Bank Transfer, Bank to Other Bank Transfer, Bill Payments, Credit Card payments â€œBAFL Credit Card and Other Bank Credit Cards only if added as beneficiary on Alfa appâ€.
+<pre id="wa" style="font-size:12px; font-family: bahnschrift;">Dear Customer, you can now perform financial transaction which includes (Bank to Bank Transfer, Bank to Other Bank Transfer, Bill Payments, Credit Card payments “BAFL Credit Card and Other Bank Credit Cards only if added as beneficiary on Alfa app”.
 
 Financial Transaction via WhatsApp BOT:
-â€¢Bank to Bank Transfer
-â€¢Bank to Other Bank Transfer
-â€¢Bill Payments
+-Bank to Bank Transfer
+-Bank to Other Bank Transfer
+-Bill Payments
 a.Mobile Payments
 b.Credit Card payments (BAFL Credit Card and Other Bank Credit Cards only if added as beneficiary).
 c.Utility bill Payments
 
-Note: Financial Transactions is located in option number â€œ7 â€“ Transactâ€ on main menu select 2 for self-service menu then of WhatsApp BOT.
-Hi â–¶ 7 â€“ Transact â–¶ Enter OTP â–¶ Choose the desired options â–¶ 1 â€“ Bank to Bank Transfer 2- Bank to other Bank transfer 3 â€“ Bill payments.
+Note: Financial Transactions is located in option number “7 – Transact” on main menu select 2 for self-service menu then of WhatsApp BOT.
+Hi ▶ 7 – Transact ▶ Enter OTP ▶ Choose the desired options ▶ 1 – Bank to Bank Transfer 2- Bank to other Bank transfer 3 – Bill payments.
 </pre>
-<button onclick="copy_to_clipboard('wa')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<button onclick="copy_to_clipboard('wa')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 <div class="tab" style="background-color:#ffffff00";>
   <button class="tablinks" onmouseover="openCity(event, 'ubp')">UTILITY BILL PAYMENT THROUGH WHATSAPP BOT: (English)</button>
   <button class="tablinks" onmouseover="openCity(event, 'ubpu')">UTILITY BILL PAYMENT THROUGH WHATSAPP BOT: (Urdu)</button>
@@ -418,116 +439,116 @@ Hi â–¶ 7 â€“ Transact â–¶ Enter OTP â–¶ Choose the desired opti
 <div id="ubp" class="tabcontent" style="font-size:12px";>
 <hr><pre id="ubpe" style="font-size:12px; font-family: bahnschrift;">Dear Customer, utility bill payment process via WhatsApp BOT is mentioned below.
 
-â€¢ Access Bank Alfalahâ€™s WhatsApp BOT.
-â€¢ From main menu, select option 7 for financial transactions.
-â€¢ Enter the OTP, which you will receive on your registered mobile number.
-â€¢ Select Option 3 â€œUTILITY BILL PAYMENTâ€.
-â€¢ Enter the last four digits of your registered CNIC number.
-â€¢ Select desired account by selecting its option number.
-â€¢ Enter your year of birth as per CNIC.
-â€¢ Type an option number of your desired beneficiary.
-â€¢ Enter last four digits of you debit card number.
-â€¢ Type â€œPayâ€ in order to pay your bill successfully.
+- Access Bank Alfalah’s WhatsApp BOT.
+- From main menu, select option 7 for financial transactions.
+- Enter the OTP, which you will receive on your registered mobile number.
+- Select Option 3 “UTILITY BILL PAYMENT”.
+- Enter the last four digits of your registered CNIC number.
+- Select desired account by selecting its option number.
+- Enter your year of birth as per CNIC.
+- Type an option number of your desired beneficiary.
+- Enter last four digits of you debit card number.
+- Type “Pay” in order to pay your bill successfully.
 </pre>
-<hr><button onclick="copy_to_clipboard('ubpe')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<hr><button onclick="copy_to_clipboard('ubpe')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="ubpu" class="tabcontent" style="font-size:12px";>
 <hr><pre id="ubpu1" style="font-size:12px; font-family: bahnschrift;">Muaziz Saarif, WhatsApp BOT ke zariye diye gae utility bill payment process ko follow kar sakte hen.
 
-â€¢ Bank Alfalah ka WhatsApp BOT access karen (WhatsApp chat channel ka number he 021 111 225 111).
-â€¢ Main menu men option 7 select karen financial transactions ke liye.
-â€¢ OTP enter karna hoga jo apke registered mobile number pe receive hoga.
-â€¢ Option 3 "UTILITY BILL PAYMENTS" select karenge.
-â€¢ CNIC number ke last four digits enter karne honge.
-â€¢ Jis account ke zariye transaction karna chah rahe hen wo account select karna hoga, account ka option number select karke.
-â€¢ CNIC ke mutabiq apna year of birth enter karen. For Example:1995
-â€¢ Phir apko beneficiary select karna hoga jo ke ap us beneficiary ke option number se select kar sakte hen.
-â€¢ Apne debit card number ke last four digits enter karne honge.
-â€¢ Successfull payment ke liye "Pay" type karke send karna hoga.
+- Bank Alfalah ka WhatsApp BOT access karen (WhatsApp chat channel ka number he 021 111 225 111).
+- Main menu men option 7 select karen financial transactions ke liye.
+- OTP enter karna hoga jo apke registered mobile number pe receive hoga.
+- Option 3 "UTILITY BILL PAYMENTS" select karenge.
+- CNIC number ke last four digits enter karne honge.
+- Jis account ke zariye transaction karna chah rahe hen wo account select karna hoga, account ka option number select karke.
+- CNIC ke mutabiq apna year of birth enter karen. For Example:1995
+- Phir apko beneficiary select karna hoga jo ke ap us beneficiary ke option number se select kar sakte hen.
+- Apne debit card number ke last four digits enter karne honge.
+- Successfull payment ke liye "Pay" type karke send karna hoga.
 </pre>
-<hr><button onclick="copy_to_clipboard('ubpu1')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<hr><button onclick="copy_to_clipboard('ubpu1')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="btb" class="tabcontent" style="font-size:12px";>
 <hr><pre id="btbe" style="font-size:12px; font-family: bahnschrift;">Dear Customer, bank to bank transfer process via WhatsApp BOT is mentioned below.
 
-â€¢ Access Bank Alfalahâ€™s WhatsApp BOT.
-â€¢ From main menu, select option 7 for financial transactions.
-â€¢ Enter the OTP, which you will receive on your registered mobile number.
-â€¢ Select Option 1 â€œbank to bank transferâ€.
-â€¢ Enter the last four digits of your registered CNIC number.
-â€¢ Select desired account by selecting its option number.
-â€¢ Enter your year of birth as per CNIC.
-â€¢ Type an option number of your desired beneficiary.
-â€¢ Enter last four digits of you debit card number.
-â€¢ Enter the amount you want to transfer.
-â€¢  Your transaction will process successfully.
+- Access Bank Alfalah’s WhatsApp BOT.
+- From main menu, select option 7 for financial transactions.
+- Enter the OTP, which you will receive on your registered mobile number.
+- Select Option 1 “bank to bank transfer”.
+- Enter the last four digits of your registered CNIC number.
+- Select desired account by selecting its option number.
+- Enter your year of birth as per CNIC.
+- Type an option number of your desired beneficiary.
+- Enter last four digits of you debit card number.
+- Enter the amount you want to transfer.
+-  Your transaction will process successfully.
 
 Please note that you can transfer your funds into recent 25 beneficiaries which was created by Alfa App using Bank Alfalah's WhatsApp BOT service.
 </pre>
-<hr><button onclick="copy_to_clipboard('btbe')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<hr><button onclick="copy_to_clipboard('btbe')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </p>
 </div>
 
 <div id="btbu" class="tabcontent" style="font-size:12px";>
 <hr><pre id="btbu1" style="font-size:12px; font-family: bahnschrift;">Muaziz Saarif, WhatsApp BOT ke zariye diye gae bank to bank funds transfer process ko follow kar sakte hen.
 
-â€¢ Bank Alfalah ka WhatsApp BOT access karen (WhatsApp chat channel ka number he 021 111 225 111).
-â€¢ Main menu men option 7 select karen financial transactions ke liye.
-â€¢ OTP enter karna hoga jo apke registered mobile number pe receive hoga.
-â€¢ Option 1 "Bank to bank transfer" select karen.
-â€¢ CNIC number ke last four digits enter karne honge.
-â€¢ Jis account ke zariye transaction karna chah rahe hen wo account select karna hoga, account ka option number select karke.
-â€¢ CNIC ke mutabiq apna year of birth enter karen. For Example:1995
-â€¢ Phir apko beneficiary select karna hoga jo ke ap us beneficiary ke option number se select kar sakte hen.
-â€¢ Apne debit card number ke last four digits enter karne honge.
-â€¢ Jo amount ap transfer karna chah rahe hen wo enter karen.
-â€¢  Apki transaction successfully process hojaegi.
+- Bank Alfalah ka WhatsApp BOT access karen (WhatsApp chat channel ka number he 021 111 225 111).
+- Main menu men option 7 select karen financial transactions ke liye.
+- OTP enter karna hoga jo apke registered mobile number pe receive hoga.
+- Option 1 "Bank to bank transfer" select karen.
+- CNIC number ke last four digits enter karne honge.
+- Jis account ke zariye transaction karna chah rahe hen wo account select karna hoga, account ka option number select karke.
+- CNIC ke mutabiq apna year of birth enter karen. For Example:1995
+- Phir apko beneficiary select karna hoga jo ke ap us beneficiary ke option number se select kar sakte hen.
+- Apne debit card number ke last four digits enter karne honge.
+- Jo amount ap transfer karna chah rahe hen wo enter karen.
+-  Apki transaction successfully process hojaegi.
 
 Ap WhatsApp BOT ke zariye recent 25 beneficiaries ko transfer kar sakte hen jo ke apne Alfa app ke zariye create kare hue hen.
 </pre>
-<hr><button onclick="copy_to_clipboard('btbu1')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<hr><button onclick="copy_to_clipboard('btbu1')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="bto" class="tabcontent" style="font-size:12px";>
 <hr><pre id="btoe" style="font-size:12px; font-family: bahnschrift;">Dear Customer, bank to other bank transfer process via WhatsApp BOT is mentioned below.
 
-â€¢ Access Bank Alfalahâ€™s WhatsApp BOT.
-â€¢ From main menu, select option 7 for financial transactions.
-â€¢ Enter the OTP, which you will receive on your registered mobile number.
-â€¢ Select Option 2 â€œbank to other bank transferâ€.
-â€¢ Enter the last four digits of your registered CNIC number.
-â€¢ Select desired account by selecting its option number.
-â€¢ Enter your year of birth as per CNIC.
-â€¢ Type an option number of your desired beneficiary.
-â€¢ Enter last four digits of you debit card number.
-â€¢ Enter the amount you want to transfer.
-â€¢ Your transaction will process successfully.
+- Access Bank Alfalah’s WhatsApp BOT.
+- From main menu, select option 7 for financial transactions.
+- Enter the OTP, which you will receive on your registered mobile number.
+- Select Option 2 “bank to other bank transfer”.
+- Enter the last four digits of your registered CNIC number.
+- Select desired account by selecting its option number.
+- Enter your year of birth as per CNIC.
+- Type an option number of your desired beneficiary.
+- Enter last four digits of you debit card number.
+- Enter the amount you want to transfer.
+- Your transaction will process successfully.
 
 Please note that you can transfer your funds into recent 25 beneficiaries which was created by Alfa App using Bank Alfalah's WhatsApp BOT service.
 </pre>
-<hr><button onclick="copy_to_clipboard('btoe')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<hr><button onclick="copy_to_clipboard('btoe')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 <div id="btou" class="tabcontent" style="font-size:12px";>
 <hr><pre id="btou1" style="font-size:12px; font-family: bahnschrift;">Muaziz Saarif, WhatsApp BOT ke zariye diye gae bank to other bank funds transfer process ko follow kar sakte hen.
 
-â€¢ Bank Alfalah ka WhatsApp BOT access karen (WhatsApp chat channel ka number he 021 111 225 111).
-â€¢ Main menu men option 7 select karen financial transactions ke liye.
-â€¢ OTP enter karna hoga jo apke registered mobile number pe receive hoga.
-â€¢ Option 2 "Bank to other bank transfer" select karen.
-â€¢ CNIC number ke last four digits enter karne honge.
-â€¢ Jis account ke zariye transaction karna chah rahe hen wo account select karna hoga, account ka option number select karke.
-â€¢ CNIC ke mutabiq apna year of birth enter karen. For Example:1995
-â€¢ Phir apko beneficiary select karna hoga jo ke ap us beneficiary ke option number se select kar sakte hen.
-â€¢ Apne debit card number ke last four digits enter karne honge.
-â€¢ Jo amount ap transfer karna chah rahe hen wo enter karen.
-â€¢  Apki transaction successfully process hojaegi.
+- Bank Alfalah ka WhatsApp BOT access karen (WhatsApp chat channel ka number he 021 111 225 111).
+- Main menu men option 7 select karen financial transactions ke liye.
+- OTP enter karna hoga jo apke registered mobile number pe receive hoga.
+- Option 2 "Bank to other bank transfer" select karen.
+- CNIC number ke last four digits enter karne honge.
+- Jis account ke zariye transaction karna chah rahe hen wo account select karna hoga, account ka option number select karke.
+- CNIC ke mutabiq apna year of birth enter karen. For Example:1995
+- Phir apko beneficiary select karna hoga jo ke ap us beneficiary ke option number se select kar sakte hen.
+- Apne debit card number ke last four digits enter karne honge.
+- Jo amount ap transfer karna chah rahe hen wo enter karen.
+-  Apki transaction successfully process hojaegi.
 
 Ap WhatsApp BOT ke zariye recent 25 beneficiaries ko transfer kar sakte hen jo ke apne Alfa app ke zariye create kare hue hen.
 </pre>
-<hr><button onclick="copy_to_clipboard('btou1')" class="button button1"><img style="width:30px; height:25px;" src="copyicon.png"></button><hr>
+<hr><button onclick="copy_to_clipboard('btou1')" class="button button1"><img style="width:30px; height:25px;" src="copyiconn.jfif"></button><hr>
 </div>
 
 
